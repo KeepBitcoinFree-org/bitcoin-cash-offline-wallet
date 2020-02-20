@@ -2,13 +2,11 @@
 <html lang="en">
 	<head>
 
-<title>BA.net Bitcoin Cash Offline Wallet - BCH Offline Transaction Vault Webapp Paper Sweep</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="description" content="Bitcoin Cash Offline Wallet BCH Offline Transaction Vault Web SPV tails cold storage paper wallet sweep">
-<meta name="keywords" content="offline,bitcoin,cash,wallet,bch,vault,transaction,js,browser,web,spv,tails,cold,storage,paper,wallet, sweep">
+		<title>Bitcoin Cash Wallet by BA.net</title>
 
-<meta property="og:image" content="https://ba.net/offline-bch/bchvault.png">
-
+        	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+		<meta name="keywords" content="bitcoin, wallet, multisig, multisignature, address, browser, javascript, js, broadcast, transaction, verify, decode" />
+		<meta name="description" content="A Bitcoin Cash Wallet written in Javascript. Supports Multisig, Custom Transactions, nLockTime and more!" />
 
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -53,39 +51,24 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-
-<table><td valign=top>
-<a href="#home" class="navbar-brand" id="homeBtn">
-<img src="https://ba.net/offline-bch/bchvault.png" width=50 height=50></a>
-</td>
-<td>
-<p class="lead">
-<!a href="#home">
-<b>Bitcoin Cash Offline Wallet</b><!/a></p>
-</td>
-</table>
 					</div>
-
 					<div class="collapse navbar-collapse">
 						<ul class="nav navbar-nav">
 
+<li>
+<table><td valign=top>
+<a href="#home" class="navbar-brand" id="homeBtn">
+<img src="https://ba.net/offline-bch/bchvault.png" width=50 height=50></a> 
+<td><a href="https://ba.net/bitcoin-cash-offline-wallet/"><font size ="4"><b>Bitcoin Cash<br>Offline Wallet</b></font></a>
+</table>
+</li>
+
 <li><a href="#newTransaction" data-toggle="tab"><span class="glyphicon glyphicon-plus"></span> New Transaction</a></li>
 
-<li><a href="#cashaddr" data-toggle="tab">
-<span class="glyphicon glyphicon-list-alt"></span>
- CashAddr</a></li>
 
 							<li><a href="#verify" data-toggle="tab"><span class="glyphicon glyphicon-ok"></span> Verify</a></li>
 							<li><a href="#sign" data-toggle="tab"><span class="glyphicon glyphicon-pencil"></span> Sign</a></li>
 							<li><a href="#broadcast" data-toggle="tab"><span class="glyphicon glyphicon-globe"></span> Broadcast</a></li>
-
-<li><a href="#explorer" data-toggle="tab">
-<span class="glyphicon glyphicon-search"></span>
- Explorer</a></li>
-
-<li><a href="#buy" data-toggle="tab">
-<span class="glyphicon glyphicon-usd"></span>
- Buy Crypto</a></li>
 
 							<li><a href="#about" data-toggle="tab"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
 						
@@ -109,34 +92,35 @@
 							</div>
 						</div>
 
-						<div class="page-header">
-							<h3>BA.net - Bitcoin Cash Offline Wallet</h3>
-					</div>
 
-<p class="lead">
-Test with small amounts, this software is provided with <b>no warranty</b>.
-<br>Nothing is sent to our server, all code is run locally in your browser.
-<br>Open source MIT code, can be downloaded and run in an air-gapped computer. 
-</p>
-                           
-<p class="lead">Start by making a <a href="#newTransaction"><b>New Transaction</b></a>                                                                     
-</p>
-                            
-<p class="lead">                                         
-Offline Wallet Based on code from ba.net, outcast3k, api cashexplorer.bitcoin.com              
-<br>iphone@ba.net 1BEz7cUYfis4NkZ35zLtfp12iaFRf4EoFm  
-</p>
+                                                <h2>About <small>open source bitcoin cash offline wallet</small></h2>                                                                                      
+<font size=4>                                                                                                      
+<p>Test with small amounts, this software is provided with no warranty.                              <br>Nothing is sent to our server, all code is run locally in your browser.                          <br>   Open source MIT code can be downloaded and run in an air-gapped computer.                             
+ <p>Start with <a href="#newTransaction">New Transaction</a>                                                                                                     
+<p>                                                                                                   
+Offline Howto Based on code from ba.net, outcast3k, api cashexplorer.bitcoin.com                     <br>iphone@ba.net 1BEz7cUYfis4NkZ35zLtfp12iaFRf4EoFm                                                      
+                                                                                                      
 
-<p class="lead"><a href="https://reddit.com/r/adblockvpn/" target=_blank>Reddit support forum</a>, <a href="https://www.reddit.com/r/btc/comments/7zu73p/bitcoin_cash_offline_wallet_beta/">r/btc announcement</a>                          
-                              
+                                                <p>Source <a href="https://ba.net/bitcoin-cash-offline-wallet/">https://ba.net/offline-bch/src/</a></p>                                                    
+                                                                                                      
+                                                <h3>What is Bitcoin Cash?</h3>                        
+                                                <p>Bitcoin Cash is a type of digital currency in which encryption techniques are used to regulate the generation of units of currency and verify the transfer of funds, operating independently of a central bank. See <a href="https://www.bitcoincash.org/" target="_blank">bitcoincash.org</a> for more information.</p>                                          
+                                                                                                      
+<h3>More Utilities</h3>                                                                               
+                                                                                                      
+<p><a href="https://ba.net/bitcoin-cash-offline-wallet/menu.html">                                    
+bch utilities</a>                                                 
 
-<p>
-
+</font>
 
 </div>
 
-					<div class="tab-pane tab-content" id="newAddress">
 
+
+					<div class="tab-pane tab-content" id="newAddress">
+						<h2>New Address <small>create a new address</small></h2>
+						<p>Any keys used you will need to manually store safely as they will be needed later to redeem the bitcoins.</p>
+						<label>Address (Share)</label>
 
 						<div class="input-group">
 							<input id="newBitcoinAddress" type="text" class="form-control address" value="" readonly>
@@ -381,9 +365,11 @@ Offline Wallet Based on code from ba.net, outcast3k, api cashexplorer.bitcoin.co
 						<h2>Transaction <small>Create a new transaction</small></h2>
 						<p>Use this page to create a raw transaction</p>
 
-						<b>BCH Input Address</b> (legacy format)
+						<b>Bitcoin Cash Address</b>:
 						<div class="input-group">
-
+							<span class="input-group-btn">
+								<button class="btn btn-info qrcodeScanner" type="button" data-toggle="modal" data-target="#modalQrcodeScanner" forward-result="#redeemFrom"><span class="glyphicon glyphicon-camera"></span></button>
+							</span>
 							<input type="text" id="redeemFrom" class="form-control" value="">
 							<span class="input-group-btn">
 								<button id="redeemFromBtn" class="btn btn-info" type="button">Load</button>
@@ -397,7 +383,7 @@ Offline Wallet Based on code from ba.net, outcast3k, api cashexplorer.bitcoin.co
 						<div class="hidden alert alert-info" id="redeemFromAddress"></div>
 
 						<div>
-
+							<a href="javascript:;" id="optionsCollapse"><div class="well well-sm"><span class="glyphicon glyphicon-collapse-down" id="glyphcollapse"></span> Advanced Options</div></a>
 
 							<div class="hidden" id="optionsAdvanced">
 
@@ -520,9 +506,7 @@ Offline Wallet Based on code from ba.net, outcast3k, api cashexplorer.bitcoin.co
 
 						<div class="row">
 							<div class="col-xs-3">
-								<label><abbr title="Amount not spent will be used as a miner transaction fee">Transaction Fee</abbr>&nbsp;&nbsp;
-
-</label>
+								<label><abbr title="What is not spent will be used as a transaction fee">Transaction Fee</abbr>&nbsp;&nbsp;<a href="https://bitinfocharts.com/comparison/transactionfees-bch.html" target="_blank"><span class="glyphicon glyphicon-question-sign"></span></a></label>
 								<input type="text" id="transactionFee" class="form-control" value="0.0000" readonly>
 							</div>
 						</div>
@@ -562,7 +546,7 @@ Offline Wallet Based on code from ba.net, outcast3k, api cashexplorer.bitcoin.co
 						<h2>Verify <small>transactions and other scripts</small></h2>
 						<div class="row">
 							<div class="col-md-12">
-								<p>Enter the raw transaction, redeem script, pubkey to convert it into a readable format that can be verified manually.</p>
+								<p>Enter the raw transaction, redeem script, pubkey, hd address or wif key to convert it into a readable format that can be verified manually.</p>
 								<textarea type="text" id="verifyScript" class="form-control" style="height:125px"></textarea>
 							</div>
 						</div>
@@ -874,130 +858,34 @@ Offline Wallet Based on code from ba.net, outcast3k, api cashexplorer.bitcoin.co
 						
 					</div>
 
-<div class="tab-pane tab-content" id="buy">                                  
+					<div class="tab-pane tab-content" id="about">
+						<h2>About <small>open source bitcoin cash offline wallet</small></h2>
+						<p>Version 1.0</p>
 
-<h2>Buy Crypto <small>With a Credit Card</small></h2>            
-
-<p class="lead">
-<a href="https://changenow.io/exchange?amount=150&from=usd&link_id=4487ec2e72dc22&to=bch" target=_blank>
-Buy Crypto
-<img src="https://ba.net/gifs/visa-small.gif" width=41 height=13 border=0>
-</a>
-</p>
-
-<p class="lead">What Credit Card can I use ?
-
-<p class="lead">Your credit card must comply with the requirements of ChangeNow and purchase provider Simplex: the card must be issued by VISA or MasterCard.
-
-<p class="lead">Can I use a pre-paid credit card ?
-
-<p class="lead">Yes, you can. There are several requirements from ChangeNow, Simplex: your pre-paid card must be eligible for international transactions; it must be enrolled to the 3DSecure program; your pre-paid card issuer must allow cryptocurrency-related transactions.
-
-<p><br><a class="btn btn-primary btn-sm"href="https://changenow.io/exchange?amount=150&from=us
-d&link_id=4487ec2e72dc22&to=bch" target=_blank                        
-role="button">Buy Crypto                                                
-<img src="https://ba.net/gifs/visa-small.gif" width=41 height=13 border=0></a></p>
-
-<p class="lead"><br><a href="https://ba.net/bitcoin-cash-offline-wallet/ebook.html" target=_blank>
-Offline BCH App for OSX  
-<img src="https://ba.net/gifs/appleicon.png" width=20 height=20> 
-</a>      
-
-<p class="lead"><br><a href="https://ba.net/bitcoin-cash-offline-wallet/ebook.html" target=_blank>
-Cold Storage Ebook
-<img src="https://ba.net/gifs/epub.png" width=20 height=20>
-</a>
-
+<font size=5>
+<p>Test with small amounts, this software is provided with no warranty. 
+<br>Nothing is sent to our server, all code is run locally in your browser. 
+<br>Open source MIT code can be downloaded and run in an air-gapped computer. 
 
 <p>
-<div class="embed-responsive embed-responsive-4by3">                        
-<iframe class="embed-responsive-item" src="https://ba.net/bitcoin-cash-offline-wallet/price1.html"></iframe>                                                  </div>     
-
-</div>
-
-<div class="tab-pane tab-content" id="cashaddr">                
-
-<div class="embed-responsive embed-responsive-4by3">
-  <iframe class="embed-responsive-item" src="https://ba.net/bitcoin-cash-offline-wallet/cashaddr/"></iframe>
-</div>                                                                     
-
-</div>           
-
-<div class="tab-pane tab-content" id="explorer">                         
-                                                                            
-<div class="embed-responsive embed-responsive-4by3">                         
-  <iframe class="embed-responsive-item" src="https://bch.coin.space/"></iframe>                                               
-</div>                                                                     
-                                                                          
-</div>        
-
-
-
-
-					<div class="tab-pane tab-content" id="about">
-						<h2>About <small>BA.net Bitcoin Cash Offline Wallet</small></h2>
-
-<p class="lead">
-Test with small amounts, this software is provided with <b>no warranty</b>. 
-<br>Nothing is sent to our server, all code is run locally in your browser. 
-<br>Open source MIT code, can be 
-<a href="https://ba.net/bitcoin-cash-offline-wallet/src" target=_blank>  
-downloaded</a> 
-and run in an air-gapped computer. 
-</p>
-
-<p class="lead">
-Offline Wallet Based on code from ba.net, outcast3k, api cashexplorer.bitcoin.com 
+Offline Howto Based on code from ba.net, outcast3k, api cashexplorer.bitcoin.com 
 <br>iphone@ba.net 1BEz7cUYfis4NkZ35zLtfp12iaFRf4EoFm 
-</p>
-
-<p class="lead"><a href="https://reddit.com/r/adblockvpn/" target=_blank>Reddit support forum</a>, <a href="https://www.reddit.com/r/btc/comments/7zu73p/bitcoin_cash_offline_wallet_beta/">r/btc announcement</a>
-
-<p class="lead">
-<a href="https://ba.net/bitcoin-pay-button/freebutton/">
-Free BCH Pay Button 
-<img src="https://ba.net/bitcoin-cash/icon.png" width=23 height=23 border=0>
-</a>
-
-<p class="lead"><a href="https://ba.net/bitcoin-cash-offline-wallet/ebook.html" target=_blank>
-Cold Storage Ebook
-<img src="https://ba.net/gifs/epub.png" width=20 height=20>
-</a>
-
-<p class="lead"><a href="https://changenow.io/exchange?amount=150&from=usd&link_id=4487ec2e72dc22&to=bch" target=_blank>                                                              
-Buy Crypto                                                                         
-<img src="https://ba.net/gifs/visa-small.gif" width=41 height=13 border=0>         
-</a>     
-
-
-<h3>What is Bitcoin Cash?</h3>
-
-<p>Bitcoin Cash is a Peer-To-Peer Electronic Cash System. 
-<br>It works independently of a central bank. 
-<br>See <a href="https://www.bitcoincash.org/" target="_blank">
-bitcoincash.org</a> for more information.</p>
-
+						
+<p>Compatible with bitcoinabc, Using bitcoin.com api</p>
+						
+<p>Source <a href="https://ba.net/bitcoin-cash-offline-wallet/">
+https://ba.net/offline-bch/src/</a></p>
+	
+						<h3>What is Bitcoin Cash?</h3>
+						<p>Bitcoin Cash is a type of digital currency in which encryption techniques are used to regulate the generation of units of currency and verify the transfer of funds, operating independently of a central bank. See <a href="https://www.bitcoincash.org/" target="_blank">bitcoincash.org</a> for more information.</p>
 
 <h3>More Utilities</h3>
 
-<p><a href="https://ba.net/bitcoin-cash-offline-wallet/offlinehelp.html" target=_blank>
-Offline Transaction Howto</a>
+<p><a href="https://ba.net/bitcoin-cash-offline-wallet/menu.html">
+bch utilities</a>
 
-<p><a href="https://ba.net/bitcoin-cash-offline-wallet/src" target=_blank>                
-Open Source Code Download</a>       
-
-<p><a href="https://github.com/ba-net/bitcoin-cash-offline-wallet" target=_blank>
-GitHub</a>
-
-<p><a href="http://ba.net/bitcoin-cash-offline-wallet/checksum/" target=_blank>
-SHA256SUM Check</a>
-
-<p><a href="https://ba.net/offline-bitcoin-vault/" target=_blank>
-Offline BTC</a>  
-
-<p><a href="https://ba.net/bitcoin-cash-offline-wallet/menu.html" target=_blank>
-Util Menu</a>
-
+<p><a href="https://ba.net/bitcoin-cash-offline-wallet/src">                
+source code</a>       
 
 					</div>
 
@@ -1104,9 +992,7 @@ Util Menu</a>
 					</div>
 
 					<br>
-					<p class="text-muted">
-
-</p>
+					<p class="text-muted">This page uses javascript to generate your addresses and sign your transactions within your browser, this means we <i>never</i> receive your private keys, this can be independently verified by reviewing the source code on <a href="https://ba.net/bitcoin-cash-offline-wallet/src/" target="_blank">ba.net</a>. You can also download</a> this page and host it yourself or run it offline!</p>
 					<br>
 
 				</div>
@@ -1114,14 +1000,15 @@ Util Menu</a>
 		</div>
 
 		<div id="footer">
-<!--#exec cmd="/cgi-bin/banner-poker"-->
-
 			<div class="container text-right">
 
-	        		<p class="text-muted">
-<a href="https://ba.net/bitcoin-cash-offline-wallet/menu.html" target=_blank>              
-Utils</a> 
-Version 2.0</p>
+<table><td valign=top>
+<a href="#home" class="navbar-brand" id="homeBtn">
+<img src="https://ba.net/offline-bch/bchvault.png" width=50 height=50></a>
+<td>
+<!--#exec cmd="/cgi-bin/banner-poker"-->
+</table>
+	        		<p class="text-muted">Version 1.0</p>
 			</div>
 		</div>
 

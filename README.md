@@ -4,7 +4,7 @@
 <img src=https://ba.net/offline-bch/bchvault.png width=100 height=100 border=0 align=right>
 </a>
 
-<p><a href="https://ba.net/offline-bch/">BA.net Bitcoin Cash Offline Wallet</a>
+<p><a href="https://ba.net/bitcoin-cash-offline-wallet/">BA.net Bitcoin Cash Offline Wallet</a>
 
 <p>Test with small amounts. 
 <br>The app is provided on an "as is" basis, *without any warranties*
@@ -22,7 +22,10 @@
 <p>bitcoincash:1BEz7cUYfis4NkZ35zLtfp12iaFRf4EoFm
 
 
-<p><br><a href="https://reddit.com/r/adblockvpn/" target=_blank>Reddit Support Forum</a> <a href="https://www.reddit.com/r/btc/comments/7zu73p/bitcoin_cash_offline_wallet_beta/">r/btc Announcement</a>     
+<p><br><a href="https://reddit.com/r/adblockvpn/" target=_blank>Reddit Support Forum</a> <a href="https://www.reddit.com/r/btc/comments/7zu73p/bitcoin_cash_offline_wallet_beta/">r/btc Announcement</a>  
+
+<p><a href="https://github.com/ba-net/bitcoin-cash-offline-wallet" target=_blank> 
+GitHub</a>      
 
 <p><br>
 

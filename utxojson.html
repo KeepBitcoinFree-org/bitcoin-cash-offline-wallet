@@ -1,0 +1,133 @@
+
+<html><head><title>ba.net bitcoin vault and wallet</title>
+
+<meta name="viewport" content="width=320; initial-scale=0.95;            
+maximum-scale=3.0; user-scalable=1;"/>
+
+<!!--#include file="header1-en.html" -->
+
+<p>
+
+<center>
+<table cellspacing=10>
+<td>
+<a href="https://ba.net/bitcoin-cash-offline-wallet/">
+<img src=https://ba.net/offline-bch/bchvault.png width=100 height=100 border=0>
+</a>
+<td>
+<a href="https://ba.net/privatecloudoffice">
+<img src="https://ba.net/ads/banner/managed-hosting.png"
+width=320 height=50 border=0>
+</a>
+</table></center>
+
+
+<!--#include file="linkback.html" -->
+
+</center>
+
+
+<link rel="stylesheet" href="/demo/iphone.css" />
+
+
+<center>
+
+<p><br>
+
+<script type='text/javascript'>
+function pingTime() {
+var endTime=new Date();
+//alert('load time in milliseconds: '+
+//(endTime.getTime()-window.startTime)
+//+"\nendTime: "+endTime.getTime()
+//+"\nstartTime: "+window.startTime)
+}
+</script>
+</head>
+
+<script type="text/javascript">
+function go() {
+//var site = document.getElementById ("userName");
+var site = 'ba.net/adblock';
+var site = document.getElementById ("userName").value;
+var startTime=new Date();
+window.startTime=startTime.getTime();
+//var imgSrc='http://blockchain.info/address/'+site+'?cacheBuster='+Math.random();
+//var imgSrc='https://api.blockcypher.com/v1/btc/main/addrs/'+site;
+
+//original offline
+//var imgSrc='http://blockdozer.com/insight/address/'+site;
+
+var imgSrc='https://cashexplorer.bitcoin.com/api/addr/'+site+'/utxo';
+
+//var imgSrc='http://api.blocktrail.com/v1/BTC/address/'+site+'/transactions.csv?limit=200&api_key=CSV_EXPORT';
+
+var iFrame=document.getElementById('myPingTest');
+iFrame.onload=pingTime;
+iFrame.src=imgSrc;
+}
+</script>
+
+
+
+    
+<form id="regForm" method="get" action="" onsubmit="return false;">
+Bitcoin Cash Address 
+<br><input type="text" name="userName" id="userName" value="" size="45">
+    </form>
+
+<p>
+<button OnClick="javascript:go();" style="font-size:90%">
+Get UTXO Data JSON</button>
+<p>
+
+
+<script type="text/javascript">
+var uagent = navigator.userAgent.toLowerCase();
+function DetectIphone()
+{
+   if (uagent.search("iphone") > -1) return true;
+   if (uagent.search("ipod") > -1) return true;
+   if (uagent.search("android") > -1) return true;
+
+   else
+      return false;
+}
+if (!DetectIphone()) {
+document.write("<meta name=\"viewport\" content=\"width=device-width,initial-scale=1.10,user-scalable=yes\" /> ");
+document.write("<center><IFRAME width=680 height=1200 id=myPingTest></IFRAME>");
+};
+
+if (DetectIphone()) {
+document.write("<center><IFRAME width=320 height=480 id=myPingTest></IFRAME>")};
+</script>
+
+
+
+<p><br>
+
+<p><br>
+
+<p><li><a href="http://ba.net/util/cashbalance/index.html" target=_top>
+Check Balance & Confirmations</a>
+
+<p><li><a href="index5.html" target=_top>Check Balance2</a>
+
+
+
+<p><br>
+
+<!--#include file="linkback.html" -->
+
+
+
+<p><br>
+
+
+<!--#exec cmd="/cgi-bin/banner-poker"-->
+
+<p><br>
+
+
+</body>
+</html>
