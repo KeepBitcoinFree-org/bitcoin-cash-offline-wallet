@@ -11,7 +11,8 @@
 
 <p>Nothing is sent to our server, the code is run locally in your browser.
 <br>BCH Offline Wallet can be downloaded and run in an air-gapped computer. 
-<br>Open source MIT code at ba.net/bitcoin-cash-offline-wallet/src/
+<br>Open source MIT code at https://github.com/ba-net/bitcoin-cash-offline-wallet
+
         
 <p>Based on code from ba.net, outcast3k api cashexplorer.bitcoin.com
 
@@ -31,9 +32,9 @@ GitHub</a>
 
 
 <center>
-<a href="https://ba.net/digital-paywall-btc-bch/"
+<a href="https://ba.net/bitcoin-pay-button/"
 target=_top>
-<img src="https://ba.net/ads/banner/bchpay.gif" width=320 height=50 border=0>
+<img src="https://ba.net/ads/banner/bchpay2.gif" width=320 height=50 border=0>
 </a></center>
 
 <p><br>
