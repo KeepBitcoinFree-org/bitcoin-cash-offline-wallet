@@ -1,0 +1,349 @@
+<p>
+<center>
+<table cellspacing=10>
+<td>
+<a href="https://ba.net/bitcoin-cash-offline-wallet/">
+<img src=https://ba.net/offline-bch/bchvault.png width=100 height=100 border=0>
+</a>
+<td>
+<!--#exec cmd="/cgi-bin/banner-poker"-->
+
+</table></center>
+
+<!--#include file="linkback.html" -->
+
+
+
+
+
+                    <div id="article-div" class="col s12 m9 l10"> <!-- Start Article -->
+<h1>How To Set Up A Secure Ubuntu 16.04 Temporary Live Boot Session For Handling Private Keys And Other Bitcoin-Related Tasks</h1>
+<div id="introduction" class="section scrollspy">
+    <img src="tails-banner@0,5x.png" style="width: 80%"></img>
+    <h2> Introduction </h2>
+
+    <p>
+        For those who care deeply about their computer security and/or those holding a non-trivial amount of value in Bitcoin over time, a daily-use PC is likely too insecure as an environment to be used for performing these cryptographic tasks. Hardware wallets
+        are a good compromise between convenience and security. However, there are reasons why you might need more direct access to your keys, such as performing <a class="text-link" href="novices-guide-to-claiming-forked-bitcoin-value">the task of claiming forked bitcoin value</a>.
+        Bringing your private keys or seed phrase onto an insecure PC defeats the security advantage of the hardware wallet and is generally inadvisable.
+    </p>
+
+    <h4>Temporary Operating System</h4>
+    <p>
+        As a compromise, some of the security properties of a hardware wallet can be preserved by running a temporary session of a Linux-based OS. This solution will run only open-source software from a known source to reduce the risk of any malware exploits.
+        This solution does not write anything to your hard drive (unless you really force it), so there is less risk of your private keys being retained on the PC to be recovered by someone else later.
+    </p>
+
+    <h4>Ubuntu and TAILS</h4>
+    <p>
+        While Ubuntu is not necessarily the ideal Linux-based OS to use for this high-security purpose. It is, however, the easiest, so for moderate-value amounts and for learning exercises, it may be an appropriate choice to get you started. <a class="text-link"
+            target="_blank" rel="noopener" href="https://tails.boum.org">TAILS</a> is a security-focused live boot environment made for high-security tasks (such as handling larger quantities of BTC). We have provided <a class="text-link" href="secure-live-boot-tails-for-bitcoin-keys">an equivalent guide for TAILS</a>        which you can optionally follow if that is a closer match for your skill and requirements.
+    </p>
+
+    <h4>Ubuntu 16.04 LTS</h4>
+    <p>
+        This guide is for using the Ubuntu 16.04 LTS release images, which will be supported by Canonical until 2021. Even if Ubuntu 18.04 LTS is available, consider using 16.04 since the default software is more proven and stable at present. A reason to use
+        an Ubuntu 18.04 LTS image is if you have very new PC hardware that may not be supported by 16.04.
+    </p>
+
+</div>
+<!-- end introduction -->
+
+<div id="need" class="section scrollspy">
+    <h2> What You Need </h2>
+    <img src="computer-banner@0,5x.png" style="width: 80%"></img>
+    <p>
+        You need a PC or laptop that meets <a class="text-link" target="_blank" rel="noopener" href="https://help.ubuntu.com/community/Installation/SystemRequirements">the minimum system requirements</a> for running Ubuntu. It is okay if this PC has a
+        different normal use with a different OS installed (e.g. this could be your daily Windows PC) since the live session we will be running is only temporary and will not affect the underlying OS.
+    </p>
+
+    <h4>Apple Mac</h4>
+    <p>
+        Running a live-boot Ubuntu session on a Mac is possible, but this guide is not explicitly catering to it. Some disadvantages of running Ubuntu on a Mac is getting Mac input peripherals (keyboard, trackpad), etc working properly.
+    </p>
+
+    <h4>DVD Burner</h4>
+    <p>
+        For better security, it is best if the PC has a DVD drive that can burn discs. You will also need a blank DVD and a drive to write out the OS image to it in preparation. If you don't have an optical drive, you can still boot Ubuntu like this with a USB
+        flash storage drive.
+    </p>
+
+    <h4>USB Drive</h4>
+    <p>
+        A USB flash storage drive is, however, a slight compromise on security since the USB flash storage can be compromised in more ways than a DVD. It is also a piece of storage that can potentially be written to (unlike a DVD). If you are going down the USB
+        flash storage drive route, you will need a drive that is of at least 2GB capacity. Any previous data contents of this stick will be overwritten by this process. We do recommend purchasing one brand-new for this purpose to help ensure that it has
+        not been previously compromised by malware.
+    </p>
+
+</div>
+<!-- end introduction -->
+
+<div id="setting-up" class="section scrollspy">
+    <h2> Setting up the Ubuntu 16.04 OS image </h2>
+
+    <p>
+        There are much better guides for doing this that are tailored to your existing OS setup than could ever possibly be written here.
+    </p>
+
+    <h4>Overview</h4>
+    <p>
+        The basic story is that you first download the Ubuntu 16.04 LTS desktop installation ISO and burn/copy it onto the DVD/USB disk/drive. Make sure you download the desktop version. Unless you have a particularly old computer, you want to download the 'amd64'
+        version. At the time of this writing, the most likely ISO that you want is <a class="text-link" target="_blank" rel="noopener" href="http://releases.ubuntu.com/16.04/ubuntu-16.04.4-desktop-amd64.iso">this one</a>, however, do make sure
+        to seek out the latest version of 16.04 LTS from the official Ubuntu sources.
+    </p>
+
+    <h4>DVD</h4>
+    <p>
+        If you are setting up live DVD, you can follow the guide for starting with <a class="text-link" target="_blank" rel="noopener" href="https://tutorials.ubuntu.com/tutorial/tutorial-burn-a-dvd-on-windows">Windows</a>, <a class="text-link" target="_blank"
+            rel="noopener" href="https://tutorials.ubuntu.com/tutorial/tutorial-burn-a-dvd-on-macos">Mac</a> or <a class="text-link" target="_blank" rel="noopener" href="https://tutorials.ubuntu.com/tutorial/tutorial-burn-a-dvd-on-ubuntu">Linux</a>.
+    </p>
+
+    <h4>USB Drive</h4>
+    <p>
+        If you are setting up live USB stick, you can follow the official guides for starting with <a class="text-link" target="_blank" rel="noopener" href="https://tutorials.ubuntu.com/tutorial/tutorial-create-a-usb-stick-on-windows">Windows</a>,
+        <a class="text-link" target="_blank" rel="noopener" href="https://tutorials.ubuntu.com/tutorial/tutorial-create-a-usb-stick-on-macos">Mac</a> or <a class="text-link" target="_blank" rel="noopener" href="https://tutorials.ubuntu.com/tutorial/tutorial-create-a-usb-stick-on-ubuntu">Linux</a>.
+    </p>
+
+</div>
+<!-- end setting-up -->
+
+<div id="booting" class="section scrollspy">
+    <h2> Booting into an Ubuntu 16.04 Temporary Session</h2>
+
+    <p>
+        This is an exercise in getting your PC's BIOS to boot off of the DVD or USB stick rather than the connected hard drive that has Windows on it. It varies based on your exact hardware, so if you are not experienced with PC building and maintenance, getting
+        hung up here is common. The <a class="text-link" target="_blank" rel="noopener" href="https://help.ubuntu.com/community/BootFromCD">Ubuntu community guide</a> is a good starting place for help and there are plenty of other resources available
+        online.
+    </p>
+
+    <h4>BIOS Menu</h4>
+    <p>
+        You may need to watch your BIOS closely when it boots to see if there are instructions for opening the BIOS menu in the text that briefly appears. If that fails, you can try using Google with your laptop' or PC's model number and the words <code>BIOS boot from DVD</code>        or <code>BIOS boot from USB</code> and hopefully you can find some specific instructions. If this is a custom-built PC, the motherboard's model number is what you should search on. Also, the motherboard's printed manual might offer some help.
+    </p>
+
+    <h4>Disconnect Main Hard Disk</h4>
+    <p>
+        If you are still stuck, you can try physically disconnecting your other drives, such that it has no other option but to boot off of the DVD or USB stick. Since we are not installing an OS, this is fine as long as you remember to re-attach it to make the
+        underlying installed OS functional again once we are done.
+    </p>
+
+    <h4>Booting Ubuntu</h4>
+    <p>
+        Once your computer successfully starts booting off the Ubuntu drive, you will see loading screens and it might take a couple minutes to complete, so be patient. When it finishes, you will see a screen that looks like this:
+    </p>
+
+    <img class="materialboxed responsive-img z-depth-3" src="ubuntu16-try-ubuntu.png" alt="Try Ubuntu">
+
+    <p>
+        Since we are not planning on installing and we just want to use this temporarily, we choose the <code>Try Ubuntu</code> option. When it is finished booting, you will see the desktop and a pop-up with some hotkey tips. You can dismiss the pop-up,
+        and you should be looking at a blank desktop:
+    </p>
+
+    <img class="materialboxed responsive-img z-depth-3" src="ubuntu16-boot-desktop.png" alt="Desktop Boot">
+
+    <h4>Go Online</h4>
+    <p>
+        Depending on what you are intending to do, it is likely you will need to connect to the internet. The network control and status monitor is on the panel on the top right:
+    </p>
+
+    <img class="text-link" target="_blank" rel="noopener" src="ubuntu16-connect.png" alt="Connect to Network">
+
+    <h4>Using Wi-Fi</h4>
+    <p>
+        If you are connecting to WiFi, there should be a list of networks you can select and you can follow the dialogue to enter the appropriate password.
+    </p>
+
+</div>
+<!-- end booting -->
+
+<div id="opening" class="section scrollspy">
+
+    <h2> Opening Up The Terminal </h2>
+
+    <p>
+        Since we are doing high-security operations, it always comes at a trade-off with convenience. There are no easy to read graphical menus for many of the custom tasks involving Bitcoin keys, so we have to roll up our sleeves get into the Terminal.
+    </p>
+
+    <h4>Minimize Online Activity</h4>
+    <p>
+        Navigating to lots of web sites can potentially be tracked by external parties. Potential vulnerabilities can be avoided by using only the minimal amount of tools to obtain the exact software you need. We'll be using the Ubuntu package manager, Python
+        package manager and <a class="text-link" target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Git">Git</a>. This guide will help you along the way with screenshots and you will get the hang of it with a bit of practice.
+    </p>
+
+    <h4>Launch Terminal</h4>
+    <p>
+        We start by launching Ubuntu's Terminal application. We can do so by first clicking on the <code>main menu</code> in the top left corner. Once it is opened, we can just type <code>terminal</code> in the search box and it should come up like this:
+    </p>
+
+    <img class="materialboxed responsive-img z-depth-3" src="ubuntu16-terminal-search.png" alt="Terminal Search">
+
+    <p>
+        If we click on the <code>Terminal</code> application icon, it should open appear on the desktop like this:
+    </p>
+
+    <img class="materialboxed responsive-img z-depth-3" src="ubuntu16-terminal-window.png" alt="Terminal Window">
+
+</div>
+<!-- end opening -->
+
+<p>
+<center>
+<table cellspacing=10>
+<td>
+<a href="https://ba.net/bitcoin-cash-offline-wallet/">
+<img src=https://ba.net/offline-bch/bchvault.png width=100 height=100 border=0>
+</a>
+<td>
+<!--#exec cmd="/cgi-bin/banner-poker"-->
+
+</table></center>
+
+<!--#include file="linkback.html" -->
+
+<center>
+<table width=750><td>
+
+
+
+
+
+    <!-- Body Content -->
+    <div class="z-depth-3 white">
+
+        <!-- ************************************************************* -->
+        <!--  PAGE CONTENT -->
+        <!-- ************************************************************* -->
+            <div class="container" style="padding-top: 1em; padding-bottom: 2em;">
+                <div class="row">
+                    <div id="article-div" class="col s12 m9 l10"> <!-- Start Article -->
+<h1>How To Run The Bitaddress.org and Offline BTC BCH Tool In A Secure Offline Ubuntu 16.04 Temporary Live Boot Session</h1>
+<div id="introduction" class="section scrollspy">
+    <img src="ubuntu-banner@0,5x.png" style="width: 80%"></img>
+<h2> Introduction </h2>
+<p>
+This article assumes that you set up an Ubuntu 16.04 temporary live boot session
+<a href=banet0.html>Howto available here</a> including running 'sudo apt-get update' and installing git from the official Ubuntu software repositories. The task for this article is to safely download <a class="text-link" target="_blank" rel="noopener" href="https://bitaddress.org">The Bitaddress.org Tool</a> directly from Github so we can run it from the local machine while it is disconnected from the internet.
+</p>
+
+<img class="materialboxed responsive-img z-depth-3" src="bitaddress.png" alt="Validate Bitaddress">
+
+<p>
+It is important we go through these set of steps rather than using the tool via the web in order to keep your private keys somewhat in a state of cold storage where they don't touch a machine that is on the internet. We will not use Google or other service (that may be tracking you) to download the tool. Instead, we will download it directly from its source.
+</p>
+
+<p>
+If you are using this tool to access your private key, the components will not be typed into this machine until it has been disconnected from the internet. Since by design, the OS will not write anything to the hard drive, it will not retain any memory of the keys (unless there is highly-sophisticated malware that evades these precautions). This is appropriate for low-value amounts where the ease of using Ubuntu provides better utility than no protection at all. For higher-value amounts and more confident Linux users it is recommended that one looks into using <!a class="collection-item" href="secure-live-boot-tails-for-bitcoin-keys">TAILS</a> instead.
+</p>
+</div> <!-- end introduction -->
+
+<div id="download" class="section scrollspy">
+<h2> Download The Bitaddress.org Tool From Github </h2>
+
+<p>
+For the last step of the previous article <!a class="text-link" href="secure-live-boot-ubuntu-for-bitcoin-keys">the previous article</a>, git was installed. The first step here is to use Git from the Terminal application to clone the bitaddress.org repository <code>https://github.com/pointbiz/bitaddress.org</code> from github onto the local machine.
+</p>
+
+<p>
+    This can be done by opening the Terminal app via the Applications menu entry and typing into the terminal:
+</p>
+
+<code class="block">git clone https://github.com/pointbiz/bitaddress.org</code>
+
+<p>
+    Then and press <code class="action">Enter</code>. It will take a couple seconds look like this when it is done:
+</p>
+
+<img class="materialboxed responsive-img z-depth-3" src="ubuntu16-bitaddress-clone.png" alt="Clone Bitaddress">
+
+<p>
+This downloads the source code provided into the Ubuntu user's home directory. Since this is a temporary live boot session, this is not actually written to any disk, but rather just held in the computer's RAM for the remainder of the time the PC is powered on. However, it does function as if it were on a hard drive as far as the software can tell.
+</p>
+
+<p>
+If you access the tool via the web at <a href="https://bitaddress.org">bitaddress.org</a>, it redirects to a URL <a href="https://www.bitaddress.org/bitaddress.org-v3.3.0-SHA256-dec17c07685e1870960903d8f58090475b25af946fe95a734f88408cef4aa194.html">https://www.bitaddress.org/bitaddress.org-v3.3.0-SHA256-dec17c07685e1870960903d8f58090475b25af946fe95a734f88408cef4aa194.html</a>. As you can see it has the Sha256 checksum <code>dec17c07685e1870960903d8f58090475b25af946fe95a734f88408cef4aa194</code> as a component. To be absolutely sure we got the right software, we can check that the file we downloaded exactly matches this checksum value.
+</p>
+
+<p>
+    This can be done by typing the command:
+</p>
+<code class="block">sha256sum bitaddress.org/bitaddress.org.html</code>
+<p>
+    Then pressing <code class='action'>Enter</code> like so:
+</p>
+
+
+<img class="materialboxed responsive-img z-depth-3" src="ubuntu16-bitaddress-sha256.png" alt="Validate Bitaddress">
+
+
+<p>
+This uses Ubuntu's built-in utility <code>sha256sum</code> to checksum the file which git downloaded to the <code>bitaddress.org/</code> directory as a file named <code>bitaddress.org.html</code>. You should get the exact answer <code>dec17c07685e1870960903d8f58090475b25af946fe95a734f88408cef4aa194</code>, which is impossible to forge with a different file as long as the sha256 hash algorithm remains secure.
+</p>
+
+<p>
+We can now close the Terminal window, and open Ubuntu's <code>GUI File Explorer</code> tool by clicking on the grey icon of a file cabinet on the left hand side menu. In the window that comes up, you should see a folder called <code>bitaddress.org</code> which is the first item in the user's home folder. If you double-click on it, the file explorer shows the contents of the folder which should look like this:
+</p>
+
+<img class="materialboxed responsive-img z-depth-3" src="ubuntu16-bitaddress-find.png" alt="Find Bitaddress">
+
+
+</div> <!-- end download -->
+
+<div id="disconnect" class="section scrollspy">
+<h2> Disconnect From the Internet </h2>
+
+<p>
+Before we run the tool, we should disconnect from the internet. Ubuntu's network control menu is in the top right corner. Networking can be disabled. Additionally, to be completely sure you are offline, you can consider unplugging your computer's Ethernet cable (if it is connected that way) or switching off any hardware networking disabling switches if, for example, you have one on the laptop you are using. What you see in the menu will vary depending on your network hardware, but this is what the menu looks like:
+</p>
+
+<img class="materialboxed responsive-img z-depth-3" src="ubuntu16-disconnect.png" alt="Disconnect Network">
+</div> <!-- end disconnect -->
+
+<div id="open" class="section scrollspy">
+<h2> Open The Bitaddress.org Tool With Firefox </h2>
+
+<p>
+From the file explorer, we can open the self-contained tool which provided in the form of a <code>.html</code> file (with embedded Javascript). The easiest way is to right-click on the <code>.html</code> file and choose <code>Open With Firefox Web Browser</code>. If you are using a Mac and only have one mouse button available, you can also drag and drop the <code>.html</code> file onto the Firefox icon on the side menu.
+</p>
+
+<img class="materialboxed responsive-img z-depth-3" src="ubuntu16-bitaddress-open.png" alt="Open Bitaddress">
+
+<p>
+This tool can now be used to generate private keys or type in and operate on BIP38 encrypted private keys or split wallet fragments.
+</p>
+
+<img class="materialboxed responsive-img z-depth-3" src="ubuntu16-bitaddress-use.png" alt="Use Bitaddress">
+
+<p>
+If, for example, you are using the bitaddress.org took to generate paper wallets to print, Ubuntu 16.04 should have sufficient drivers for most USB printers that can be used while this machine is offline.
+</p>
+
+
+<div id="offline" class="section scrollspy">
+<h2> Download The BA.net Offline BTC BCH Vault </h2>
+
+<p>Download from 
+<a href="https://ba.net/bitcoin-cash-offline-wallet/src/">
+https://ba.net/bitcoin-cash-offline-wallet/src/</a>
+
+<p>Check the sha256sum files content with the commands
+
+<pre>
+sha256sum offline-bch.tar.gz
+sha256sum offline-btc.tar.gz
+</pre>
+
+<p>
+<a href="https://ba.net/bitcoin-cash-offline-wallet/offlinehelp.html">
+Offline Transaction Howto</a>
+
+
+<p>
+When you are finished with using this tools, you can close the Firefox window, and shut down the PC. It will not retain any memory of what was done during this session.
+</p>
+</div> <!-- end open -->
+
+<p><br>
+<!--#include file="linkback.html" -->
+
+<p><br>
+

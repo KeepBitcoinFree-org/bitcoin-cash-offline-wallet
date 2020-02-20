@@ -1,0 +1,27 @@
+<p>
+
+<script type="text/javascript">
+var uagent = navigator.userAgent.toLowerCase();
+function DetectIphone()
+{
+   if (uagent.search("iphone") > -1) return true;
+   if (uagent.search("ipod") > -1) return true;
+   if (uagent.search("android") > -1) return true;
+   else
+      return false;
+}
+</script>
+
+
+<script type="text/javascript">
+if (!DetectIphone()) {
+document.write("<iframe src=https://ba.net/bitcoin-cash-offline-wallet/cashaddr/ frameborder=no width=680 height=530></iframe>");
+}
+if (DetectIphone()) {
+document.write("<iframe src=https://ba.net/bitcoin-cash-offline-wallet/cashaddr/ frameborder=no width=" + window.innerWidth + "  height=430></iframe>");
+}
+</script>
+
+
+<p><br>
+

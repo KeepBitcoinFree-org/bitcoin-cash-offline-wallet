@@ -1,0 +1,95 @@
+
+<p>
+<center>
+<table cellspacing=10>
+<td>
+<a href="https://ba.net/bitcoin-cash-offline-wallet/">
+<img src=https://ba.net/offline-bch/bchvault.png width=100 height=100 border=0>
+</a>
+<td>
+<a href="https://changenow.io/exchange?amount=1&from=btc&link_id=4487ec2e72dc22&to=xmr" target="_blank"><img src="https://changenow.io/images/embeds/button.svg" alt="ChangeNOW button"></a>
+</table></center>
+
+<!--#include file="linkback.html" -->
+
+<center>
+<table width=750><td>
+
+<font size=5>
+
+<h3>Bitcoin Cash Offline Wallet? </h3>
+
+<p>Summary
+
+<p>There's no one holding coins in custody. It's simply a joined transaction aka 
+coin join where various parties all agree to sign after they check their 
+outputs are present in the tx. It uses a simple layered encryption so no one 
+knows who's outputs are whose even among the participants.
+
+<p>Overview
+<p>QWhat is CashShuffle?
+<p>ACashShuffle is a fully decentralized coin mixing protocol that shuffles your Bitcoin Cash with other network participants. This shuffling process obscures your real spending and makes it extremely difficult for chain analysis companies to track your coins.
+
+<p>QWhat are the use-cases for CashShuffle?
+ACashShuffle is intended for confidential business purchases, personal privacy, and increasing overall coin fungibility.
+
+<p>QWhat is the difference between coin mixing and CashShuffle?
+A"Coin mixing" commonly refers to the use of services that allow a user to replace his or her coins with a different set of coins. CashShuffle is different. It allows users to combine their transactions with others, creating obfuscation.
+
+<p>The disadvantages of coin mixing is that the user must trust the mixing service, and usually has to pay a fee. But with CashShuffle, there is no risk of lost funds, and no additional fees.
+
+<p>QHow does CashShuffle's privacy compare to coins like Monero?
+ACashShuffle aims to provide a working implementation of CoinJoin on top of the Bitcoin protocol. CashShuffle doesn't offer everything Monero does, nor is it an "ultimate" solution to privacy.
+
+<p>However, by integrating it in major wallets, the Bitcoin Cash ecosystem can enjoy a practical and user-friendly privacy tool that will increase usage and adoption. This will also lead to a growing anonymity set, which may be the most important factor in any system.
+
+<p>CashShuffle can also be used together with additional privacy tools. It's part of an evolving application layer for Bitcoin Cash that aims to continually improve privacy and fungibility.
+
+<p><br>
+<center><img src=shuffle.svg width=450>
+</center>
+
+<p><br>
+
+<p>Security
+<p>QAre you sure this is secure?
+ACashShuffle recently went through a paid audit from Kudelski Security who verified that CashShuffle "provides a practical solution to the problem of mixing transactions without the risk of funds being stolen in the process." They went on to state that "we did not find any evidence of malicious intent, flawed logic or potential backdoor in the codebase."
+
+If you like, you can read the whole report.
+
+<p>QCan the server(s) steal money?
+AThe server cannot steal money in a proper CashShuffle implementation because the transactions are only signed on the client side if they are valid.
+
+<p>QDoes CashShuffle support Tor?
+AYes it does. Tor users share mixing pools with normal users so finding other shufflers is just as easy as if you were not using Tor.
+
+<p>QAre unshuffled coins safe to spend?
+ANo they are not. Spending unshuffled coins can compromise the security features of CashShuffle and can undo the privacy of any past transactions. Turning off CashShuffle is not recommended.
+
+<p>Technology
+<p>QWhat coordinates the shuffle between users?
+ACashShuffle uses a client-server model. The servers coordinate which users are shuffling.
+
+<p>QAre you running a shuffling service? Are you running one of these servers?
+ANo. We simply publish code. It is up to the community to run servers.
+
+<p>QHow does the network get bootstrapped?
+AAs servers come online, they can request inclusion to the client side seed server list via GitHub.
+
+<p>QShould users set up as many servers as possible so its more decentralized?
+ANo. In the beginning, fewer, but more reliable servers are ideal. Too many servers means users will be thinly spread and will have a harder time finding join partners.
+
+<p>QWhat is CoinJoin?
+ACoinJoin is the simple, but effective idea of combining inputs and outputs from what would otherwise be separate transactions, into one jumbo transaction. This makes it extremely difficult to know which outputs correspond to which inputs.
+
+<p>QWhat is CoinShuffle?
+ACoinShuffle is a protocol which implements CoinJoin in a practical way. A layered encryption scheme is used so that none of the participants know the outputs of the other participants. In addition, a blame protocol is used to mitigate time-wasting denial-of-service type attacks.
+
+<p>QWhat is the difference between CoinShuffle and CashShuffle?
+ACoinShuffle is an excellent protocol once the participants for a joined transaction have already been chosen. However, it provides no means for establishing such groupings. CashShuffle builds upon CoinShuffle and adds a matching service. As such, it is a more complete and usable protocol. The server, like the individual participants, also has no knowledge of which input corresponds to which output.
+
+
+<p><br>
+
+<p><br>
+<!--#include file="linkback.html" -->

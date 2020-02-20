@@ -1,0 +1,53 @@
+
+<p>
+<center>
+<table cellspacing=10>
+<td>
+<a href="https://ba.net/bitcoin-cash-offline-wallet/">
+<img src=https://ba.net/offline-bch/bchvault.png width=100 height=100 border=0>
+</a>
+<td>
+<a href="https://changenow.io/exchange?amount=1&from=btc&link_id=4487ec2e72dc22&to=xmr" target="_blank"><img src="https://changenow.io/images/embeds/button.svg" alt="ChangeNOW button"></a>
+</table></center>
+
+<!--#include file="linkback.html" -->
+
+<center>
+<table width=750><td>
+
+<font size=5>
+
+<h3>Bitcoin Cash Offline Wallet? </h3>
+
+<p>Summary
+
+<p>There's no one holding coins in custody. It's simply a joined transaction aka 
+coin join where various parties all agree to sign after they check their 
+outputs are present in the tx. It uses a simple layered encryption so no one 
+knows who's outputs are whose even among the participants.
+
+<p>Overview
+<p>QWhat is CashShuffle?
+<p>ACashShuffle is a fully decentralized coin mixing protocol that shuffles your Bitcoin Cash with other network participants. This shuffling process obscures your real spending and makes it extremely difficult for chain analysis companies to track your coins.
+
+<p>QWhat are the use-cases for CashShuffle?
+ACashShuffle is intended for confidential business purchases, personal privacy, and increasing overall coin fungibility.
+
+<p>QWhat is the difference between coin mixing and CashShuffle?
+A"Coin mixing" commonly refers to the use of services that allow a user to replace his or her coins with a different set of coins. CashShuffle is different. It allows users to combine their transactions with others, creating obfuscation.
+
+<p>The disadvantages of coin mixing is that the user must trust the mixing service, and usually has to pay a fee. But with CashShuffle, there is no risk of lost funds, and no additional fees.
+
+<p>QHow does CashShuffle's privacy compare to coins like Monero?
+ACashShuffle aims to provide a working implementation of CoinJoin on top of the Bitcoin protocol. CashShuffle doesn't offer everything Monero does, nor is it an "ultimate" solution to privacy.
+
+<p>However, by integrating it in major wallets, the Bitcoin Cash ecosystem can enjoy a practical and user-friendly privacy tool that will increase usage and adoption. This will also lead to a growing anonymity set, which may be the most important factor in any system.
+
+<p>CashShuffle can also be used together with additional privacy tools. It's part of an evolving application layer for Bitcoin Cash that aims to continually improve privacy and fungibility.
+
+<p><br>
+<center><img src=shuffle.svg width=450>
+
+
+<p><br>
+<!--#include file="linkback.html" -->
