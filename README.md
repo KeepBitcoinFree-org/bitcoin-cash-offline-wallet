@@ -34,6 +34,12 @@ GitHub</a>
 <center>
 <a href="https://ba.net/bitcoin-pay-button/"
 target=_top>
+<img src="https://ba.net/ads/banner/bchpay.gif" width=320 height=50 border=0>
+</a></center>
+
+<p>
+<a href="https://ba.net/bitcoin-pay-button/"
+target=_top>
 <img src="https://ba.net/ads/banner/bchpay2.gif" width=320 height=50 border=0>
 </a></center>
 
