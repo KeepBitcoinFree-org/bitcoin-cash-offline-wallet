@@ -56,21 +56,27 @@
 	coinjs.TESTNET_URL = 'https://trest.bitcoin.com/v1';
 //	coinjs.MAINNET_URL = 'https://rest.bitcoin.com/v1';
 
-// banet api v2
+// banet api v1
 
-coinjs.MAINNET_URL = 'https://cashexplorer.bitcoin.com/api';
+//coinjs.MAINNET_URL = 'https://cashexplorer.bitcoin.com/api';
+
+//banet api v2
+
+//coinjs.MAINNET_URL = 'https://rest.bitcoin.com/v2';
+
+coinjs.MAINNET_URL = 'https://rest.bitbox.earth/v1';
 
 	coinjs.bitcoincom = function() {
 		var r = {};
 		
 		r.details = function(address) {
-//			return coinjs.currenturl + '/address/details/' + address;
-return coinjs.currenturl + '/addr/' + address;
+//return 'https://rest.bitcoin.com/v2/address/details/' + address;
+return 'https://rest.bitbox.earth/v1/address/details/' + address;
 		}
 
 		r.utxo = function(address) {
-//			return coinjs.currenturl + '/address/utxo/' + address;
-return coinjs.currenturl + '/addr/' + address +'/utxo/';
+//return 'https://rest.bitcoin.com/v2/address/utxo/' + address;
+return 'https://rest.bitbox.earth/v1/address/utxo/' + address;
 		}
 
 		r.sendtx = function(tx) {
@@ -1046,7 +1052,8 @@ return "https://blockchair.com/bitcoin-cash";
 
 		/* list unspent transactions */
 		r.listUnspent = function(address, callback) {
-			coinjs.ajax(coinjs.host+'?uid='+coinjs.uid+'&key='+coinjs.key+'&setmodule=addresses&request=unspent&address='+address+'&r='+Math.random(), callback, "GET");
+//jaime
+//			coinjs.ajax(coinjs.host+'?uid='+coinjs.uid+'&key='+coinjs.key+'&setmodule=addresses&request=unspent&address='+address+'&r='+Math.random(), callback, "GET");
 		}
 
 		r.listUnspent2 = function(address, callback) {
