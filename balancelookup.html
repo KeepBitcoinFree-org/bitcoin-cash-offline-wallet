@@ -1,0 +1,63 @@
+
+<center>
+
+<form id="my-form">
+    <input type="text" name="in" value="1BEz7cUYfis4NkZ35zLtfp12iaFRf4EoFm" size=45 style="font-size:100%"/>
+<br>
+    <button type="submit" style="font-size:100%">Balance Lookup</button>
+</form>
+
+
+   <div id="jsonData" style="display: block;margin-top: 20px"></div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+
+<script type="text/javascript">
+function processForm(e) {
+    if (e.preventDefault) e.preventDefault();
+
+    /* do what you want with the form */
+
+var first2 = document.getElementsByName("in")[0].value;
+
+var content = "Looking Up...";
+$("#jsonData").html(content);
+
+var content = "";
+//var url = 'https://rest.bitcoin.com/v2/address/details/1BEz7cUYfis4NkZ35zLtfp12iaFRf4EoFm';
+var url = 'https://rest.bitbox.earth/v1/address/details/'+first2;
+
+var content = "";
+$.getJSON(url, function (data11) {
+content += "Balance BCH: ";
+content += data11.balance;
+content += "<br> Balance Satoshis : ";
+content += data11.balanceSat;
+content += "<br> Unconfirmed Balance : ";
+content += data11.unconfirmedBalance;
+content += "<br> Unconfirmed Transactions : ";
+content += data11.unconfirmedTxApperances;
+
+content += "<p> ";
+
+
+//document.write("<br>", content);
+$("#jsonData").html(content);
+
+});
+
+    // You must return false to prevent the default form behavior
+    return false;
+}
+
+var form = document.getElementById('my-form');
+if (form.attachEvent) {
+    form.attachEvent("submit", processForm);
+} else {
+    form.addEventListener("submit", processForm);
+}
+</script>
+
