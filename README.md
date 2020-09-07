@@ -23,7 +23,7 @@
 <p>bitcoincash:1BEz7cUYfis4NkZ35zLtfp12iaFRf4EoFm
 
 <br>2020 MIT code fundraising                                                   
-<a href="https://ba.net/bchpay/button/bchfund.php?address=1BEz7cUYfis4NkZ35zLtfp12iaFRf4EoFm&supportemail=iphone@ba.net&product=2020-Offline-BCH-MIT-Code-Funding&amount=10&fundgoal=4000" target=_blank>
+<a href="https://ba.net/bitcoin-cash-offline/wallet/#fundraise" target=_blank>
 <img src="https://ba.net/bchpay/button/fundraise.gif" width=60 height=60 border=0></a>     
 
 <p><br><a href="https://reddit.com/r/adblockvpn/" target=_blank>Reddit Support Forum</a> <a href="https://www.reddit.com/r/btc/comments/7zu73p/bitcoin_cash_offline_wallet_beta/">r/btc Announcement</a>  
