@@ -62,21 +62,21 @@
 
 //banet api v2
 
-//coinjs.MAINNET_URL = 'https://rest.bitcoin.com/v2';
+coinjs.MAINNET_URL = 'https://rest.bitcoin.com/v2';
 
-coinjs.MAINNET_URL = 'https://rest.bitbox.earth/v1';
+//coinjs.MAINNET_URL = 'https://rest.bitbox.earth/v1';
 
 	coinjs.bitcoincom = function() {
 		var r = {};
 		
 		r.details = function(address) {
-//return 'https://rest.bitcoin.com/v2/address/details/' + address;
-return 'https://rest.bitbox.earth/v1/address/details/' + address;
+return 'https://rest.bitcoin.com/v2/address/details/' + address;
+//return 'https://rest.bitbox.earth/v1/address/details/' + address;
 		}
 
 		r.utxo = function(address) {
-//return 'https://rest.bitcoin.com/v2/address/utxo/' + address;
-return 'https://rest.bitbox.earth/v1/address/utxo/' + address;
+return 'https://rest.bitcoin.com/v2/address/utxo/' + address;
+//return 'https://rest.bitbox.earth/v1/address/utxo/' + address;
 		}
 
 		r.sendtx = function(tx) {
