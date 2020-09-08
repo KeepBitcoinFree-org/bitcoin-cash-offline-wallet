@@ -2,7 +2,7 @@
 <center>
 
 <form id="my-form">
-    <input type="text" name="in" value="1BEz7cUYfis4NkZ35zLtfp12iaFRf4EoFm" size=45 style="font-size:100%"/>
+    <input type="text" name="in" value="1Jtbq4aJAq5PPEYXoYvBqfUNQRuk84avGV" size=45 style="font-size:100%"/>
 <br>
     <button type="submit" style="font-size:100%">Balance Lookup</button>
 </form>
@@ -28,7 +28,8 @@ $("#jsonData").html(content);
 
 var content = "";
 //var url = 'https://rest.bitcoin.com/v2/address/details/1BEz7cUYfis4NkZ35zLtfp12iaFRf4EoFm';
-var url = 'https://rest.bitbox.earth/v1/address/details/'+first2;
+//var url = 'https://rest.bitbox.earth/v1/address/details/'+first2;
+var url = 'https://rest.bitcoin.com/v2/address/details/'+first2;
 
 var content = "";
 $.getJSON(url, function (data11) {
