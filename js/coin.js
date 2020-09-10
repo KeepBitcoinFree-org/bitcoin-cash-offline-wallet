@@ -62,7 +62,9 @@
 
 //banet api v2
 
-coinjs.MAINNET_URL = 'https://rest.bitcoin.com/v2';
+coinjs.MAINNET_URL = 'https://explorer.api.bitcoin.com/bch/v1/';
+
+//coinjs.MAINNET_URL = 'https://rest.bitcoin.com/v2';
 
 //coinjs.MAINNET_URL = 'https://rest.bitbox.earth/v1';
 
@@ -70,12 +72,17 @@ coinjs.MAINNET_URL = 'https://rest.bitcoin.com/v2';
 		var r = {};
 		
 		r.details = function(address) {
-return 'https://rest.bitcoin.com/v2/address/details/' + address;
+
+//curl -X GET "https://explorer.api.bitcoin.com/bch/v1/addr/1Jtbq4aJAq5PPEYXoYvBqfUNQRuk84avGV?from=0&to=1000&noTxList=0" -H "accept: application/json"
+
+return 'https://explorer.api.bitcoin.com/bch/v1/addr/' + address;
+//return 'https://rest.bitcoin.com/v2/address/details/' + address;
 //return 'https://rest.bitbox.earth/v1/address/details/' + address;
 		}
 
 		r.utxo = function(address) {
-return 'https://rest.bitcoin.com/v2/address/utxo/' + address;
+return 'https://explorer.api.bitcoin.com/bch/v1/addr/' + address + '/utxo';
+//return 'https://rest.bitcoin.com/v2/address/utxo/' + address;
 //return 'https://rest.bitbox.earth/v1/address/utxo/' + address;
 		}
 
