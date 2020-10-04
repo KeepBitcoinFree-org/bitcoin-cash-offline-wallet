@@ -856,6 +856,18 @@ return "https://blockchair.com/bitcoin-cash";
 			return true;
 		}
 
+
+//DAX defi                                                                                                      
+                r.writeBytes2 = function(data){
+                        if (data.length < 76) { //OP_PUSHDATA1                   
+//                        this.buffer.push(data.length);
+                        }
+                        this.buffer = this.buffer.concat(data);
+                        this.chunks.push(data);
+                        return true;
+                }
+
+
 		/* write bytes to buffer */
 		r.writeBytes = function(data){
 			if (data.length < 76) {	//OP_PUSHDATA1
@@ -1027,7 +1039,14 @@ return "https://blockchair.com/bitcoin-cash";
 			var OPRETBytes = [6].concat(Crypto.util.randomBytes(4)).concat(ephemeralPt.getEncoded(true)); // ephemkey data
 			var q = coinjs.script();
 			q.writeOp(106); // OP_RETURN
+
+//DEX defi
+
 			q.writeBytes(OPRETBytes);
+
+//nogo
+//q.writeBytes(4);
+
 			v = {};
 			v.value = 0;
 			v.script = q;
@@ -1045,10 +1064,14 @@ return "https://blockchair.com/bitcoin-cash";
 		/* add data to a transaction */
 		r.adddata = function(data){
 			var r = false;
-			if(((data.match(/^[a-f0-9]+$/gi)) && data.length<160) && (data.length%2)==0) {
+			if(((data.match(/^[a-f0-9]+$/gi)) && data.length<320) && (data.length%2)==0) {
 				var s = coinjs.script();
+
+//dex defi
+//6a04
 				s.writeOp(106); // OP_RETURN
-				s.writeBytes(Crypto.util.hexToBytes(data));
+			        s.writeOp(Crypto.util.hexToBytes("04"));
+				s.writeBytes2(Crypto.util.hexToBytes(data));
 				o = {};
 				o.value = 0;
 				o.script = s;
@@ -1059,7 +1082,7 @@ return "https://blockchair.com/bitcoin-cash";
 
 		/* list unspent transactions */
 		r.listUnspent = function(address, callback) {
-//jaime
+//jaime 
 //			coinjs.ajax(coinjs.host+'?uid='+coinjs.uid+'&key='+coinjs.key+'&setmodule=addresses&request=unspent&address='+address+'&r='+Math.random(), callback, "GET");
 		}
 
@@ -1592,8 +1615,9 @@ return "https://blockchair.com/bitcoin-cash";
 					this.signmultisig(i, wif, shType, prevtxout.script, prevtxout.amount);
 				} else {
 					// could not sign
-					alert(d['type'] + ' not support yet!');
-					return False;
+//jaime psbt
+//					alert(d['type'] + ' not support yet!');
+//					return False;
 				}
 			}
 			return this.serialize();
@@ -1614,12 +1638,17 @@ return "https://blockchair.com/bitcoin-cash";
 				buffer = buffer.concat(scriptBytes);
 				buffer = buffer.concat(coinjs.numToBytes(parseInt(txin.sequence),4));
 			}
+
+//buffer = buffer.concat(coinjs.numToVarInt(4));
+
 			buffer = buffer.concat(coinjs.numToVarInt(this.outs.length));
 
 			for (var i = 0; i < this.outs.length; i++) {
 				var txout = this.outs[i];
  				buffer = buffer.concat(coinjs.numToBytes(txout.value,8));
 				var scriptBytes = txout.script.buffer;
+//nogo
+//buffer = buffer.concat(coinjs.numToVarInt(4));
 				buffer = buffer.concat(coinjs.numToVarInt(scriptBytes.length));
 				buffer = buffer.concat(scriptBytes);
 			}
@@ -1677,6 +1706,8 @@ return "https://blockchair.com/bitcoin-cash";
 			var outs = readVarInt();
 			for (var i = 0; i < outs; i++) {
 				obj.outs.push({
+//nogo
+//value: "04",
 					value: coinjs.bytesToNum(readBytes(8)),
 					script: coinjs.script(readVarString())
 				});
@@ -1687,7 +1718,7 @@ return "https://blockchair.com/bitcoin-cash";
 		}
 
 		r.size = function(){
-			return ((this.serialize()).length/2).toFixed(0);
+		return ((this.serialize()).length/2).toFixed(0);
 		}
 
 		return r;

@@ -1,0 +1,181 @@
+
+<title>BCH SLP Trustless Swap - Decentralized Exchange DEX - Bitcoin Cash Offline Transaction Vault - BA.net</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<meta name="description" content="BCH Trustless Swap - Decentralized Exchange DEX - DeFi - Group TX - PSBT Bitcoin Cash Offline Wallet BCH Offline Transaction Vault Web SPV tails cold storage paper wallet sweep vault">
+
+<meta name="keywords" content="BCH Trustles Swap - Decentralized Exchange DEX - DeFi Group TX - PSBT offline,bitcoin,cash,wallet,bch,vault,transaction,js,browser,web,spv,tails,cold,storage,paper,wallet, sweep, vault">
+
+<meta property="og:image" content="https://ba.net/offline-bch/swap.png">
+
+
+
+<p>
+<center>
+<table cellspacing=10>
+<td>
+<a href="https://ba.net/bitcoin-cash-offline-wallet/">
+<img src=https://ba.net/offline-bch/bchvault.png width=100 height=100 border=0>
+</a>
+<td>
+<a href="https://ba.net/privatecloudoffice">
+<img src="https://ba.net/ads/banner/managed-hosting.png"
+width=320 height=50 border=0>
+</a>
+</table></center>
+
+<!--#include file="linkback.html" -->
+
+<center>
+<table width=750><td>
+
+<font size=5>
+
+<a name=psbt></a>
+<h3>BCH Trustless Swaps and Group Transactions</h3>
+
+<p>Imagine a situation where users, who could be collaborating remotely in some project and who’ve never met each other before, need to collectively agree to make a group payment. Each member will chip in some BCH and everyone will pay for it together, like a group of friends would settle a restaurant bill.
+
+<p>One way to do it would be for each member to prepare a transaction and then send the TXID to a chosen coordinator, who whould gather the payments from each participant and make sure the overall purchase is settled.
+
+<p>This system implies that there is a central trusted entity – someone who would have the responsibility to collect the money, make the payment and then make sure it went through correctly so he could send everyone a receipt afterwards.
+
+<p>This is a fine strategy to adopt with friends, but for unknown parties who don’t trust each other there is a problem: it is not a decentralized solution. Whenever a middleman, an escrow or any other trusted party is required, the solution is no longer decentralized. You trust someone to get the job done.
+
+<h3>The PSBT Solution</h3>
+
+Enter Partially Signed Bitcoin Transactions (PSBT).
+
+<p>You may be familiar with the concept of a multi-signature, or multisig, system? In this type of system two or more people must sign a transaction in order for it to be valid. 
+
+<p>Multisig payments had one limitation, though: the act of signing must be simultaneous. Everyone who agrees with a transaction must sign it at once before it is broadcast to the network.
+
+<p>Now imagine that there was a protocol such that a Bitcoin transaction that required multiple signatures was created but this transaction did not have to be built at once.
+
+<p>One user could sign today, another user could examine the TX and decide whether to sign later on and so forth. All this without a trusted intermediary!
+
+<p>That is what PSBT achieves. BIP 174 was proposed in mid 2017 to address exactly this scenario – and this system is already available in the current Bitcoin Cash Here’s a simple example scenario that illustrates how PSBT works.
+
+<p>To make a group payment, one of the group members creates a PSBT and adds unspent outputs, both his and other’s and the desired target output (who will receive the payment). 
+
+<p>Other users whose inputs are included in the PSBT receive the transaction by email or chat. 
+The user analyzes the inputs, outputs and amounts and decides whether it’s correct or not. If there is agreement, the user then adds his signature to the PSBT.
+
+<p>Once every participant has added their signature, the PSBT is complete. It is then compiled into a regular multisig Bitcoin transaction just as if it had been signed simultaneously. The TX is transmitted and mined like any other transaction.
+
+<p>That is how PSBT’s work! Fully decentralized – no single entity needs to be relied on or trusted to coordinate and distribute funds.
+
+<p>Users must only know each others’s Bitcoin addresses. This is a requirement for all Bitcoin payment processing anyway. So the only manual coordination that is needed between users is to know each others’ addresses. For which they can coordinate via email or chat.
+
+
+
+<a name=swap></a>
+<h3>BCH Trustless Swaps</h3>
+
+Because Bitcoin Cash has native SLP tokens, <a href="./psbt.html#psbt">PSBT</a> can be used to do trustless swaps!
+
+<p><b>Input 1 BCH SLP USDT (Alice), Input 2 BCH (Bob)
+<p>Output 0 OP_RETURN, Output 1 BCH (Alice), Output 2 USDT (Bob)
+</b>
+
+
+<p>
+<img src=bch-swap.png width=600 height=600>
+
+
+<p>To add OP_RETURN data for SLP transaction enter hex data in the address field of the first Output tab. Leave the Amount empty. 
+
+<p>You can think of SLP as a ‘transaction within a transaction’. 
+If Alice wants to send Bob some tokens, she sends 546 satosis (dust minimum) amount of BCH, and the data to transfer the token is stored in the OP_RETURN
+
+<p>To include the SLP OP_RETURN,  
+use the SLP helper tab to create it. 
+For example "SLP 1 SEND token_id 1000"
+
+<p>This would send all tokens to the first output in the transaction (vout1)
+
+<p><br><img src=swap1.png width=750>
+
+<p><br>Verify the swap transaction
+
+<p>
+<img src=swap2.png width=750>
+
+<p>It is recommended to swap the SLP token from a single address and utxo, the simplest sweep slp transaction.
+
+
+<p>
+<pre>
+Typical 2 input 3 output swap transaction
+
+Input 1 slp token
+Input 2 bch
+Output 0 OP_RETURN
+Output 1 slp token, bch 546 satoshis
+Output 2 bch
+</pre>
+
+<p>Make sure the token is located in a single address / utxo. With no other tokens in the utxo. The whole token amount will be transfered.
+
+<p>The first output of the swap TX (vout1) should be the receiving SLP address, and must include 546 satoshis.
+
+<p>
+<h3>Testing Transactions</h3>
+
+You can create swap transactions without signing all the inputs or broadcasting to the network. That way you don´t need to pay the swap fee (around $1) or miner fees (around 900 satoshis).
+
+<p>
+But you can still see the swap process and verify the swap transaction in a readable format.
+
+<p>Double check your swaps on our decode tool, and even on external Bitcoin Core Tools (tx format is compatible) 
+<a href="https://live.blockcypher.com/btc/decodetx/" target=_blank>Blockcypher decode tool</a>
+
+
+<p>
+Thanks for the feedback. You can contact us at iphone@ba.net
+
+
+<p><br><br>
+
+
+
+<p>References
+
+<p><a href="psbt1.html">
+PSBT Documentation</a>
+
+<p><a href="https://github.com/achow101/bitcoin/tree/psbt">
+BIP 174 – Reference Implementation</a>
+
+<p><a href="multisignature.html">Multisig</a>
+
+
+<p>
+
+<h3>Bitcoin Cash Offline Wallet </h3>
+
+<p>Test with small amounts, this software is provided with <b>no warranty.</b>
+
+<br>Nothing is sent to our server, all code is run locally in your browser.
+<br>Open source MIT code can be
+<a href="https://ba.net/bitcoin-cash-offline-wallet/src/" target=_blank>
+downloaded</a> and run in an air-gapped computer.
+
+<br><br>Based on code from ba.net, outcast3k, api cashexplorer.bitcoin.com
+<br>iphone@ba.net
+1BEz7cUYfis4NkZ35zLtfp12iaFRf4EoFm
+
+
+
+
+
+
+<p>
+<center>
+<img src=/bitcoin/Cold-Storage.png width=364 height=362>
+
+
+
+
+<p><br>
+<!--#include file="linkback.html" -->

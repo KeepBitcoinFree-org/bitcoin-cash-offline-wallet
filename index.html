@@ -2,12 +2,14 @@
 <html lang="en">
 	<head>
 
-<title>Bitcoin Cash Offline Wallet - BCH Offline Transaction Vault Webapp Paper Sweep - BA.net</title>
+<title>BCH SLP Trustless Swap - Decentralized Exchange DEX - Bitcoin Cash Offline Transaction Vault - BA.net</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="description" content="Bitcoin Cash Offline Wallet BCH Offline Transaction Vault Web SPV tails cold storage paper wallet sweep vault">
-<meta name="keywords" content="offline,bitcoin,cash,wallet,bch,vault,transaction,js,browser,web,spv,tails,cold,storage,paper,wallet, sweep, vault">
 
-<meta property="og:image" content="https://ba.net/offline-bch/bchvault.png">
+<meta name="description" content="BCH Trustless Swap - Decentralized Exchange DEX - DeFi - Group TX - PSBT Bitcoin Cash Offline Wallet BCH Offline Transaction Vault Web SPV tails cold storage paper wallet sweep vault">
+
+<meta name="keywords" content="BCH Trustles Swap - Decentralized Exchange DEX - DeFi Group TX - PSBT offline,bitcoin,cash,wallet,bch,vault,transaction,js,browser,web,spv,tails,cold,storage,paper,wallet, sweep, vault">
+
+<meta property="og:image" content="https://ba.net/offline-bch/swap.png">
 
 
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -75,11 +77,18 @@
 <span class="glyphicon glyphicon-list-alt"></span>
  CashAddr</a></li>
 
-<li><a href="#sign" data-toggle="tab"><span class="glyphicon glyphicon-pencil"></span> Sign</a></li>
+<li><a href="#slp-helper" data-toggle="tab">
+<span class="glyphicon glyphicon-list-alt"></span>
+ SLP</a></li>
 
-<li><a href="#verify" data-toggle="tab"><span class="glyphicon glyphicon-ok"></span> Verify</a></li>
+<li><a href="#sign" data-toggle="tab">
+<span class="glyphicon glyphicon-pencil"></span> Sign</a></li>
+
+<li><a href="#verify" data-toggle="tab">
+<span class="glyphicon glyphicon-ok"></span> Verify</a></li>
 							
-<li><a href="#broadcast" data-toggle="tab"><span class="glyphicon glyphicon-globe"></span> Broadcast</a></li>
+<li><a href="#broadcast" data-toggle="tab">
+<span class="glyphicon glyphicon-globe"></span> Broadcast</a></li>
 
 <li><a href="#explorer" data-toggle="tab">
 <span class="glyphicon glyphicon-search"></span>
@@ -87,15 +96,9 @@
 
 <li><a href="#buy" data-toggle="tab">
 <span class="glyphicon glyphicon-usd"></span>
- Buy Crypto</a></li>
+ Buy</a></li>
 
-							<li><a href="#about" data-toggle="tab"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
-
-<li>
-<a href="#fundraise" data-toggle="tab">
-<img src="https://ba.net/bchpay/button/fundraise.gif" width=25 height=25 align=left border=0></a>
-						
-
+<li><a href="#about" data-toggle="tab"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
 
 </ul>
 
@@ -117,27 +120,29 @@
 
 						<div class="page-header">
 							
-<h3>Bitcoin Cash Offline Wallet - BA.net
-<br><small>The safest bitcoin vault is offline</small></h3>
+<h3>BCH Trustless Swaps</h3>
 					</div>
 
 <p class="lead">
-Test with small amounts, this software is provided with <b>no warranty</b>.
-<br>Nothing is sent to our server, all code is run locally in your browser.
-<br>Open source MIT code, can be downloaded and run in an air-gapped computer. 
+
+Make a BCH to SLP swap, sign it and send it to your counterparty for the 2<sup>nd</sup> signature!
+
+<br><br>
+Group transactions, i.e. where 3 investors fund 5 developers for a project.
+
+<br><br>
+Start by making a <a href="#newTransaction"><b>New Transaction</b></a>     
+
+
+<br>
 </p>
                            
-<p class="lead">Start by making a <a href="#newTransaction"><b>New Transaction</b></a>                                                                     
+<p class="lead">
+<br><br>
+BCH Swap uses Partially Signed Bitcoin Transactions BIP 174. 
+<a href="psbt.html#swap" target=_blank>How it works.</a> 
 </p>
                             
-<p class="lead">                                         
-
-<br>2020 MIT code fundraising   
-<a href="#fundraise">                                                      
-<!a href="https://ba.net/bchpay/button/bchfund.php?address=1Jtbq4aJAq5PPEYXoYvBqfUNQRuk84avGV&supportemail=iphone@ba.net&product=2020-Offline-BCH-MIT-Code-Funding&amount=10&fundgoal=4000" target=_blank>                     
-<img src="https://ba.net/bchpay/button/fundraise.gif" width=60 height=60 border=0></a>       
-
-</p>
 
 <p class="lead">
 <a href="#about">GitHub</a>
@@ -147,7 +152,13 @@ Test with small amounts, this software is provided with <b>no warranty</b>.
 <p>
 
 <center>
-<img src="https://ba.net/offline-bch/bchvault.png" width=150 height=150>
+
+<a href="psbt.html#swap" target=_blank>
+<img src=bch-swap.png width=350 height=350 border=0></a>
+
+
+
+<!img src="https://ba.net/offline-bch/bchvault.png" width=150 height=150>
 </center>
 
 <p>
@@ -399,7 +410,15 @@ Test with small amounts, this software is provided with <b>no warranty</b>.
 
 					<div class="tab-pane tab-content" id="newTransaction">
 						<h2>Transaction <small>Create a new transaction</small></h2>
-						<p>Use this page to create a raw transaction</p>
+						<p class="lead">
+You can load multiple Inputs, both yours and others’. Sign it, and give the raw TX to your friends to sign. 
+<br>
+For example, you can create a transaction where 3 investors fund 5 developers for a project.
+<br>
+Or swap BCH for a SLP Token, Trustless. 
+(<a href="psbt.html#swap" target=_blank>PSBT BIP 174</a>)
+
+</p>
 
 						<b>BCH Input Address</b> (legacy format)
 						<div class="input-group">
@@ -423,14 +442,14 @@ Test with small amounts, this software is provided with <b>no warranty</b>.
 
 								<label>Clear Inputs</label>
 								<p class="checkbox">
-									<label><input type="checkbox" id="clearInputsOnLoad" class="checkbox-inline" checked> Clear existing inputs when new inputs are loaded.</label>
+									<label><input type="checkbox" id="clearInputsOnLoad" class="checkbox-inline"> Clear existing inputs when new inputs are loaded.</label>
 								</p>
 
 								<hr>
 
 								<label>Null Data</label> <span class="text-muted text-normal">(80 byte limit, <i>40 bytes recommended</i>)</span>
 								<p class="checkbox">
-									<label><input type="checkbox" id="opReturn" class="checkbox-inline"> Allow data to be sent within the transaction and stored in the blockchain by using <a href="https://bitcoin.org/en/developer-guide#null-data" target="_"blank">OP_RETURN</a>.</label>
+									<label><input type="checkbox" id="opReturn" class="checkbox-inline" checked> Allow data to be sent within the transaction and stored in the blockchain by using <a href="https://bitcoin.org/en/developer-guide#null-data" target="_"blank">OP_RETURN</a>.</label>
 									<div class="text-muted">When using this option you may enter a hex string or address into the address field on the output tab.</div>
 								</p>
 
@@ -462,7 +481,7 @@ Test with small amounts, this software is provided with <b>no warranty</b>.
 								<p>Enter the address and amount you wish to make a payment to.</p>
 								<div class="row">
 									<div class="col-xs-8">
-										<label><abbr title="Address to send to">Address</abbr></label>
+										<label><abbr title="Address to send to, or SLP Swap Hex data">Address</abbr></label>
 									</div>
 									<div class="col-xs-3">
 										<label><abbr title="Amount to send">Amount</abbr></label>
@@ -540,12 +559,19 @@ Test with small amounts, this software is provided with <b>no warranty</b>.
 
 						<div class="row">
 							<div class="col-xs-3">
-								<label><abbr title="Amount not spent will be used as a miner transaction fee">Transaction Fee</abbr>&nbsp;&nbsp;
+								<label><abbr title="Amount not spent will be used as a miner transaction fee">Miner Transaction Fee</abbr>&nbsp;&nbsp;
 
 </label>
 								<input type="text" id="transactionFee" class="form-control" value="0.0000" readonly>
 							</div>
+
+
 						</div>
+
+<br>
+<label><abbr title="Around $1 dollar for any size group Tx or swap">Swap Fee</label> 0.005
+
+<br>
 
 						<br>
 
@@ -585,12 +611,17 @@ Test with small amounts, this software is provided with <b>no warranty</b>.
 								<p>Enter the raw transaction to convert it into a readable format that can be verified manually.</p>
 								<textarea type="text" id="verifyScript" class="form-control" style="height:125px"></textarea>
 							</div>
+
+
 						</div>
 						<br>
 
 						<div class="hidden verifyData" id="verifyRsData">
 							<h4>Redeem Script</h4>
 							<p><span style="float:right"><a href="javascript:;" target="_blank" class="verifyLink" title="Link to this page"><span class="glyphicon glyphicon-link"></span></a></span>The above redeem script has been decoded</p>
+
+
+
 
 							<div class="hidden" id="verifyRsDataMultisig">
                                 <label>Multi Signature Address</label>
@@ -876,17 +907,29 @@ Test with small amounts, this software is provided with <b>no warranty</b>.
 						<br>
 					</div>
 
-					<div class="tab-pane tab-content" id="broadcast">
-						<h2>Broadcast Transaction <small>into the bitcoin cash network</small></h2>
+					
+
+<div class="tab-pane tab-content" id="broadcast">
+<h2>Broadcast Transaction <small>into the bitcoin cash network</small></h2>
 
 
-						<p>Enter your hex encoded bitcoin cash transaction</p>
-						<textarea class="form-control" style="height:125px" id="rawTransaction"></textarea>
-						<br>
-						<div id="rawTransactionStatus" class="alert hidden">
-						</div>
-						<input type="button" value="Submit" id="rawSubmitBtn" class="btn btn-primary">
-						<br>
+						
+<p>All Inputs must be signed to broadcast. 
+<br>Miner fee can be 1 satoshi/byte (but not lower). 
+<br>A typical transaction fee is 400 satoshis, a swap transaction is 900 sat. 
+</p>
+
+<br><br><br>                                                                    
+<a href="https://explorer.viawallet.com/bch/tool/broadcast?lang=en_US" target=_blank>Broadcast at viawallet.com</a>                                           
+
+<br><br>
+<!a href="https://blockchair.com/broadcast" target=_blank>
+Blockchair.com</a>
+
+<br><br><br>  
+ 
+
+
 					</div>
 
 					<div class="tab-pane tab-content" id="dev">
@@ -899,37 +942,64 @@ Test with small amounts, this software is provided with <b>no warranty</b>.
 
 <h2>Buy Crypto <small>With a Credit Card</small></h2>            
 
-<p class="lead">
-<a href="https://changenow.io/exchange?amount=150&from=usd&link_id=4487ec2e72dc22&to=bch" target=_blank>
-<b>Buy Crypto</b>
-<img src="https://ba.net/gifs/visa-small.gif" width=41 height=13 border=0>
-</a>
-</p>
-
-<p class="lead">What Credit Card can I use ?
-
-<p class="lead">Your credit card must comply with the requirements of ChangeNow and purchase provider Simplex: the card must be issued by VISA or MasterCard.
-
-<p class="lead">Can I use a pre-paid credit card ?
-
-<p class="lead">Yes, you can. There are several requirements from ChangeNow, Simplex: your pre-paid card must be eligible for international transactions; it must be enrolled to the 3DSecure program; your pre-paid card issuer must allow cryptocurrency-related transactions.
-
 <p><br><a class="btn btn-primary btn-sm"href="https://changenow.io/exchange?amount=150&from=us
-d&link_id=4487ec2e72dc22&to=bch" target=_blank                        
-role="button">Buy Crypto                                                
-<img src="https://ba.net/gifs/visa-small.gif" width=41 height=13 border=0></a></p>
+d&link_id=4487ec2e72dc22&to=bch" target=_blank                                                              
+role="button">Buy Crypto with CC                                                                             
+<img src="https://ba.net/gifs/visa-small.gif" width=41 height=13 border=0></a></p>                          
+ 
+<center>
+<p class="lead">                                                                
+<br>
+<h2>Embedded <a href="https://sideshift.ai/a/bJpIJ4QHU" target=_blank>Sideshift.ai</a> Exchange</h2>     
+<br>
+Fast Crypto Swaps, Free of Custody                                                                          
+<br>
+BCH, BTC, ETH, USDT Stablecoins, DeFi Tokens                                                      
 
-<p><br><p class="lead">
-<a href="https://changenow.io/?link_id=4487ec2e72dc22" target=_blank>
-<b>ChangeNow.io Exchange</b></a>
-Fast Crypto Swaps, Free of Custody
-</p>
+<br><br><br>                                                              
+  
+<iframe src="sideshift.html" width=600 height=1450 frameborder=no>   
+</iframe>                                                            
+
+
+<!iframe class="embed-responsive-item" src="sideshift.html"> 
+<!/iframe>   
+
+
+<p><br>
+<a href="https://sideshift.ai/shifts" target=_blank>View Swap History</a>
+
+<p><br>
+
+</center>
+<p><br><a class="btn btn-primary btn-sm"href="https://changenow.io/exchange?amount=150&from=us
+d&link_id=4487ec2e72dc22&to=bch" target=_blank                                                                   
+role="button">Buy Crypto with CC                                                                                 
+<img src="https://ba.net/gifs/visa-small.gif" width=41 height=13 border=0></a></p>                               
+                                                                                                                
+<p class="lead">What Credit Card can I use ?                                                                    
+                                                                                                             
+<p class="lead">Your credit card must comply with the requirements of ChangeNow and purchase provider Simplex: the card must be issued by VISA or MasterCard.                                                                    
+                                                                                                                 
+<p class="lead">Can I use a pre-paid credit card ?                                                               
+                                                                                                                 
+<p class="lead">Yes, you can. There are several requirements from ChangeNow, Simplex: your pre-paid card must be eligible for international transactions; it must be enrolled to the 3DSecure program; your pre-paid card issuer must allow cryptocurrency-related transactions.                                                                 
+                                    
+
+
 
 <p><p>
-<div class="embed-responsive embed-responsive-4by3">                        
-<iframe class="embed-responsive-item" src="https://ba.net/bitcoin-cash-offline-wallet/price1.html"></iframe>                                                  </div>     
+<!div class="embed-responsive embed-responsive-4by3">                        
+<!iframe class="embed-responsive-item" src="https://ba.net/bitcoin-cash-offline-wallet/price1.html"><!/iframe>  <!/div>     
 
 </div>
+
+
+
+
+
+
+
 
 <div class="tab-pane tab-content" id="fundraise">                          
                                                                           
@@ -938,7 +1008,7 @@ Fast Crypto Swaps, Free of Custody
 
 <p class="lead">
 <b>Thanks to our contributors!</b> <br>
-fifikobayashi, evaletolab, outkast2k, changenow
+fifikobayashi, evaletolab, outkast2k, sideshift, changenow
 <br>
 referrers bitcoinbookmarks, bitcoin.com news
 
@@ -953,7 +1023,7 @@ referrers bitcoinbookmarks, bitcoin.com news
 <div class="tab-pane tab-content" id="cashaddr">                
 
 <center>                                                                  
-<p class="lead"><a href="#newAddress">Generate New Address</a> (Legacy Format)              
+<p class="lead"><a href="#newAddress"><b>Generate New Address</b></a> (Legacy Format)              
 
 <div class="embed-responsive embed-responsive-4by3">
   <iframe class="embed-responsive-item" src="https://ba.net/bitcoin-cash-offline-wallet/cashaddr/"></iframe>
@@ -975,20 +1045,21 @@ referrers bitcoinbookmarks, bitcoin.com news
 </div>
 
 
-
-<div class="tab-pane tab-content" id="explorer">                         
-                                                                            
-<!div class="embed-responsive embed-responsive-4by3">                         
-<p><center>
-<iframe src="balancelookup.html" width=500 height=300 frameborder=no>         
-</iframe>   
-<!/div>
+<div class="tab-pane tab-content" id="explorer">                           
+                                                                             
+<!div class="embed-responsive embed-responsive-4by3">                       
+<p><center>                                                                   
+<iframe src="balancelookup.html" width=500 height=250 frameborder=no>         
+</iframe>                                                                     
+<!/div>                                                                       
+                                                                              
+<!br>                                                                          
+<!iframe src="slplookup.html" width=550 height=300 frameborder=no>             
+<!/iframe>    
 
 <center>
 
 <p class="lead">External BCH Explorer Site 
-<a href="https://bitinfocharts.com/bitcoin%20cash/explorer/" target=_blank>
-Bitinfocharts</a>
 
 <a href="https://explorer.bitcoin.com" target=_blank>
 Bitcoin.com</a>      
@@ -1004,6 +1075,16 @@ BTC.com</a>
 </div>        
 
 
+<div class="tab-pane tab-content" id="slp-helper">       
+                                                                              
+<p><center>                                                                 
+<iframe src="slp.html" width=720 height=1400 frameborder=no>   
+</iframe>                                                                   
+<br>                                                 
+
+</div>
+
+
 
 
 					<div class="tab-pane tab-content" id="about">
@@ -1012,89 +1093,93 @@ BTC.com</a>
 <p class="lead">
 Test with small amounts, this software is provided with <b>no warranty</b>. 
 <br>Nothing is sent to our server, all code is run locally in your browser. 
-<br>Open source MIT code, can be 
-<a href="https://github.com/ba-net/bitcoin-cash-offline-wallet" target=_blank>  
+<br>Open source code, can be 
+<!a href="https://github.com/ba-net/bitcoin-cash-offline-wallet" target=_blank>  
 downloaded</a> 
 and run in an air-gapped computer. 
 </p>
 
-<p class="lead">
-
-Launch announcement 2018 <a href="https://www.reddit.com/r/btc/comments/7zu73p/bitcoin_cash_offline_wallet_beta/" target=_blank>r/btc</a>, featured on 
-<a href="https://news.bitcoin.com/meet-be-cash-an-offline-bitcoin-cash-sending-tool/" target=_blank>Bitcoin.com news</a>
-
-<br><br>
-Offline Wallet Based on code from ba.net, outcast3k, api bitcoin.com 
-<br>iphone@ba.net 1BEz7cUYfis4NkZ35zLtfp12iaFRf4EoFm 
-
-<br>2020 MIT code fundraising    
-<a href="#fundraise">
-<!a href="https://ba.net/bchpay/button/bchfund.php?address=1Jtbq4aJAq5PPEYXoYvBqfUNQRuk84avGV&supportemail=iphone@ba.net&product=2020-Offline-BCH-MIT-Code-Funding&amount=10&fundgoal=4000" target=_blank>                                                    
-<img src="https://ba.net/bchpay/button/fundraise.gif" width=60 height=60 border=0></a>       
-
-</p>
-
-<p class="lead"> 
-<a href="https://github.com/ba-net/bitcoin-cash-offline-wallet" target=_blank>GitHub</a>
+<p class="lead">     
+Group funding transactions, custom swaps, offline wallet     
+<a href="https://ba.net/bch-slp-trustless-swap/advanced/index.html">Advanced UI</a>  
+</p>  
 
 <p class="lead">
-Get the OSX-Signed Mac App <b>$12.<sup>99</sup></b>
-<a href="https://ba.net/rest/index.php?coin=paypal&amount=12.99&product=bitcoin-cash-offline-vault-osxapp" target=_blank>
-<img src=https://ba.net/gifs/paypal.png title="Buy with Paypal or CC" width=19 height=19 border=0>
+PRO Offline App (no swap fees) 
+<br>
+<b>$24.<sup>99</sup></b>
+<a href="https://ba.net/rest/index.php?coin=paypal&amount=24.99&product=bitcoin-cash-offline-vault-osxapp" target=_blank>
+<!img src=https://ba.net/gifs/paypal.png title="Buy with Paypal or CC" width=19 height=19 border=0>
 <img src="https://ba.net/gifs/visa-small.gif" title="Buy with Paypal or CC" width=41 height=13 border=0>
 </a> 
-<a href="https://ba.net/rest/index.php?coin=bch&amount=9.99&product=bitcoin-cash-offline-vault-osxapp" target=_blank>
-<img src=https://ba.net/gifs/bch.gif title="Buy with Bitcoin Cash 30% Off" width=23 height=23 border=0>
-</a> <small><font color=red><b>30% off</b></font></small>
 
+<a href="https://ba.net/bchpay/button/tetherpay.php?address=qrzrcmg952sz9wntmp44m9edzgx6pt5a5qgycpaxct&supportemail=iphone@ba.net&product=bitcoin-cash-offline-vault-osxapp&amount=19.99" target=_blank>
+<img src=https://ba.net/gifs/tether.png title="Buy with Tether SLP" width=21 height=21 border=0>                                                            
+</a>
 
-
-
-<p class="lead">                                         
-<a href="https://ba.net/bitcoin-cash-offline-wallet/offlinehelp.html" target=_blank>
-<b>Offline Transaction Howto</b></a>    
-
+<a href="https://ba.net/rest/index.php?coin=bch&amount=19.99&product=bitcoin-cash-offline-vault-osxapp" target=_blank>
+<img src=https://ba.net/gifs/bch.gif title="Buy with Bitcoin Cash 20% Off" width=23 height=23 border=0>
+</a> <small><font color=red><b>20% off</b></font></small>
 
 <p class="lead">
-<h3>What is Bitcoin Cash?</h3>
+<a href="https://itunes.apple.com/us/app/pro-bitcoin/id1003923093?ls=1&mt=12" target=_blank>
+BTC Vault on the Apple MacStore
+<!img src="https://ba.net/gifs/appleicon.png" width=20 height=20>
+</a>
 
-<p class="lead">Bitcoin Cash is a Peer-To-Peer Electronic Cash System. 
-<br>It works independently of a central bank. 
+<br><a href="https://itunes.apple.com/us/app/pro-bitcoin/id1003923093?ls=1&mt=12" target=_blank><img src="https://ba.net/util/bitcoin/macappstore.png" width=150 height=55 border=0></a>
 
 
-<h3>More Utilities</h3>
+<br><br>
+<h3>Manuals and Howtos</h3>
 
-<p class="lead">                                                                    
-<a href="#newAddress">                                               
-Generate New Bitcoin Address</a>       
+<p class="lead"> 
+<a href="https://ba.net/bch-slp-trustless-swap/psbt.html#swap" target=_blank> 
+<!b>Trustless Swap Howto<!/b></a>   
+
+<p class="lead">                                     
+<a href="https://ba.net/bch-slp-trustless-swap/" target=_blank>            
+<!b>Easy Swap UI<!/b></a>     
+
+<p class="lead">                                                             
+<a href="https://ba.net/bch-slp-trustless-swap/psbt.html" target=_blank>  
+<!b>Group Transaction Howto<!/b></a>  
 
 <p class="lead">
-<a href="https://ba.net/util/bitcoin/osxapp.html" target=_blank>
-OSX Mac App</a>       
-
-<p class="lead">
-<a href="https://ba.net/util/bitcoin/osxapp.html" target=_blank>
-PWA App - Linux, Win, Android, iOS</a> 
-
-<p class="lead">
-<a href="https://ba.net/bitcoin-cash-offline-wallet/offlinehelp.html" target=_blank>
+<a href="https://ba.net/bch-slp-trustless-swap/offlinehelp.html" target=_blank>
 Offline Transaction Howto</a>
 
-<p class="lead">
-<a href="http://ba.net/bitcoin-cash-offline-wallet/test.html" target=_blank>
-Offline BCH Test Suite</a>  
+<p class="lead">                                                           
+<a href="https://github.com/ba-net/bitcoin-cash-offline-wallet" 
+target=_blank>                             
+GitHub Open Source Code</a>     
 
-<p class="lead">                                            
-<a href="#checksum">  
-SHA256SUM Check</a>     
+<br>
+2020 MIT code fundraising 
+<a href="#fundraise">                                                      
+<!a href="https://ba.net/bchpay/button/bchfund.php?address=1Jtbq4aJAq5PPEYXoYvBqfUNQRuk84avGV&supportemail=iphone@ba.net&product=2020-Offline-BCH-MIT-Code-Funding&amount=10&fundgoal=4000" target=_blank>                       
+                                                                              
+<img src="https://ba.net/bchpay/button/fundraise.gif" width=25 height=25 border=0></a>                                         
 
 <p class="lead">
 <a href="https://ba.net/bitcoin/" target=_blank>
-Util Menu</a>
+More Bitcoin Apps</a>
 
-<p class="lead">                                          
-<a href="https://bitcoinbookmarks.com" target=_blank>       
-Bitcoinbookmarks.com</a>    
+
+<p class="lead">                                     
+Offline Wallet Based on code from                        
+ba.net, outcast3k, api bitcoin.com, chow BIP 174                      
+<br>iphone@ba.net                                                          
+</p>    
+
+<p class="lead">    
+Launch announcement 2018 <a href="https://www.reddit.com/r/btc/comments/7zu73p/bitcoin_cash_offline_wallet_beta/" target=_blank>r/btc</a>, 
+
+<a href="https://www.reddit.com/r/btc/comments/j2l1zi/bch_slp_trustless_swaps/">BCH Swaps 2020</a>, 
+
+featured on 
+<a href="https://news.bitcoin.com/meet-be-cash-an-offline-bitcoin-cash-sending-tool/" target=_blank>Bitcoin.com news</a>    
+
 
 
 
@@ -1214,13 +1299,13 @@ Bitcoinbookmarks.com</a>
 
 		<div id="footer">
 
-<center><table cellspacing=30><td>
-<!--#exec cmd="/cgi-bin/banner-poker"-->
-<td>
-<a href="https://ba.net/sponsor.html">
-<img src=https://ba.net/gifs/your-ad-here.gif align=left
-border=0 width=11 height=60></a>
-</table>
+<center><!table cellspacing=30><!td>
+<!!--#exec cmd="/cgi-bin/banner-poker"-->
+<!td>
+<!a href="https://ba.net/sponsor.html">
+<!img src=https://ba.net/gifs/your-ad-here.gif align=left
+border=0 width=11 height=60><!/a>
+<!/table>
 </center>
 
 <!!--#exec cmd="/cgi-bin/banner-poker"-->

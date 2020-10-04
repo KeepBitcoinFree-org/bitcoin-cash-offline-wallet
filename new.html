@@ -1,0 +1,124 @@
+
+<center>
+
+<form id="my-form">
+<!input type="text" name="in" value="qz9tzs6d5097ejpg279rg0rnlhz546q4fsnck9wh5m" size=45 style="font-size:100%"/>
+
+<!qzwz83a8nuemq6fpnckmh6g9rg7z6nkktg23tg4d8s>
+
+<!qzpxdf9hez88rh8tapgg22z0prpwd2dyav2f0mwerk>
+
+Enter SimpleLedger Address
+<br><br>
+<input type="text" name="in" value="qqme8pf3v2yn9pchnekfdnqtvnxn4q9l2szd665zkx" size=55 style="font-size:100%"/>
+
+<br><br>
+    <button type="submit" style="font-size:100%">SLP Token ID and Balance Lookup</button>
+</form>
+
+
+   <div id="jsonData" style="display: block;margin-top: 20px"></div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+
+<script type="text/javascript">
+function processForm(e) {
+    if (e.preventDefault) e.preventDefault();
+
+    /* do what you want with the form */
+
+var first2 = document.getElementsByName("in")[0].value;
+
+function pad(num, size) {
+    var s = "000000000000000000" + num;
+    return s.substr(s.length-size);
+}
+
+function String2Hex(tmp) {
+    var str = '';
+    for(var i = 0; i < tmp.length; i++) {
+        str += tmp[i].charCodeAt(0).toString(16);
+    }
+    return str;
+}
+
+
+function utf8ToHex(str) {
+      return Array.from(str).map(c => 
+        c.charCodeAt(0) < 128 ? c.charCodeAt(0).toString(16) : 
+        encodeURIComponent(c).replace(/\%/g,'').toLowerCase()
+      ).join('');
+    }
+
+
+var simple = "simpleledger:";
+ if (simple.substring(0, 12) === first2.substring(0, 12))
+ first2=first2.slice(13);
+
+var content = "Looking Up...";
+$("#jsonData").html(content);
+
+var url = 'https://rest.bitcoin.com/v2/slp/balancesForAddress/simpleledger:'+first2;
+
+
+var content = "";
+$.getJSON(url, function (data11) {
+
+$("#jsonData").html(content);
+
+var url2  = 'https://rest.bitcoin.com/v2/slp/tokenStats/'+data11[0].tokenId;
+
+
+var content = "";
+$.getJSON(url2, function (data22) {
+
+content += "TokenId: ";
+content += data11[0].tokenId;
+content += "<br> Balance  : ";
+content += data11[0].balance;
+content += "<p> ";
+
+content += "<img src=https://tokens.bch.sx/128/";
+content +=  data11[0].tokenId;
+content +=".png width=64 height=64>";
+content += "<p> ";
+
+var demo = Number(data11[0].balance)
+var decimals = Number(data22.decimals)
+if (decimals != 0) { 
+ demo = demo * 10 ** decimals;
+ demo = Math.round(demo);
+ }
+content += "<p>OP_RETURN (HEX)<br>";
+content += "<input size=90 value=\"";                                        
+content += "534c500001010453454e4420" + data11[0].tokenId + "08" + pad(demo.toString(16),16);
+content += "\">";
+content += "<p> ";
+
+
+
+$("#jsonData").html(content);
+});
+
+
+
+
+
+});
+
+
+
+
+
+    // You must return false to prevent the default form behavior
+    return false;
+}
+
+var form = document.getElementById('my-form');
+if (form.attachEvent) {
+    form.attachEvent("submit", processForm);
+} else {
+    form.addEventListener("submit", processForm);
+}
+</script>
+

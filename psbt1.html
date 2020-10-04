@@ -1,0 +1,238 @@
+
+<p>
+<center>
+<table cellspacing=10>
+<td>
+<a href="https://ba.net/bitcoin-cash-offline-wallet/">
+<img src=https://ba.net/offline-bch/bchvault.png width=100 height=100 border=0>
+</a>
+<td>
+<a href="https://ba.net/privatecloudoffice">
+<img src="https://ba.net/ads/banner/managed-hosting.png"
+width=320 height=50 border=0>
+</a>
+</table></center>
+
+<!--#include file="linkback.html" -->
+
+<center>
+<table width=750><td>
+
+<font size=5>
+
+<a name=psbt></a>
+<h3>PSBT (BIP 174) - Partially Signed Bitcoin Transactions</h3>
+
+Multisig transactions 1 have been a great use case of Bitcoin for the past few years, they require unsigned or partially signed transactions to be passed between multiple parties to “co-sign” them. However, there is currently no unified format for how multiple parties may share these transactions between multiple signers, it depends on the particular implementation for each wallet making it hard to do among parties using different Bitcoin wallets.
+
+<p>
+A draft BIP (174), which was proposed last year by Andrew Chow, was recently a subject of interest among Bitcoin developers. It aims to create a standard extensible format that different clients can implement making Partially Signed Bitcoin Transactions (PSBT) easier to pass around users to sign and combine their signatures.
+
+<p>
+Since signing transactions alsow requires signers to have access to the UTXOs being spent, this format also aims to allow offline signers such as hardware and “air-gappd” wallets to sign transactions without needing to access the UTXO set and witout being defrauded. To explain the need for this BIP, we’re going to start with an example of why this is important.
+
+<p>
+Say I’m Bob, I’d like to pay Alice 5 BTC in exchange for a service, but I don’t trust Alice and we both trust Mark, so we create a 2-of-3 Multisig address with 5 Bitcoins between Alice, Bob and Mark. Now Alice did not provide the service and I would like to get my money back, I’m going to create a PBST and send it to Mark. Mark, being an Escrow, cares about the security of his coins so he signs my PSBT transaction using an offline machine and sends it back to me, I’ll then take my signed transaction and Mark’s signed transaction, combine and serialize them then broadcast them to the network as a valid serialized network transaction that spends the inputs back to my address using 2 different signatures.
+
+<p>
+Another example would be the scenario where we are doing something like a group purchase, I can make a PSBT with my inputs, pass it around to different parties, each of them will in turn add their inputs and sign the transaction, then I’ll sign the transaction, finalize and serialize it then send it to the network.
+
+
+<p>
+Multisig Workflow using PSBTs
+
+<p>
+<img src=multisig-workflow.svg>
+
+<p>
+Multisig Workflow using PSBTs
+
+
+<p>
+The PSBT format consists of key-value pairs <key>|<value>, the keys are most of the time just a one byte hex integer, or a hex integer concatenated with a public key. They consist of “global types”, which apply to both inputs and outputs,“per-input” and “per-output” types. Currently the defined “per-input” and “per-output” types include: Witness Script, Redeem Script and BIP 32 derivation path, with extra types in the “per-input” field like Witness UTXO and Non-Witness UTXO, Sighash Type , Partial Signature, Finalized scriptSig and Finalized scriptWitness.
+
+<p>
+The transaction format will be as follows:
+
+<p>
+{0x70736274}|{0xff}|{global key-value map}|{input key-value map}|...|{input key-value map}
+    NameTypeValueDescription
+    Magic Bytesint32_t0x70736274This is a 4 byte integer that is the ASCII for PSBT
+    SeparatorChar0xffThis is always 0xff to fail any serialization attempt from a non-PSBT serializer
+    Global DataKey-value mapVariesKey-value map for all global data
+    InputsArray of key-value mapsVariesThese are the key-value pairs we mentioned earlier
+    OutputsArray of key-value mapsVariesThese are the key-value pairs we mentioned earlier
+
+<p>
+There has been discussions in the Bitcoin-dev recently against the key-value model, calling for a simpler set model, it’s argued that this can be better in human readability and have more space efficiency as some keys can be dropped, but this most likely won’t be implemented as it is a drastic change from the original BIP proposal.
+
+As proposed by the current BIP, there are 4 different roles a party can play during the partial signing scheme, a Creator, Signer, Combiner and Input Finalizer. A new update to the BIP, currently still being discussed, adds an Updater and a Transaction Extractor roles.
+
+<p>
+The Creator creates an unsigned transaction and places it in a new PSBT, along with creating an empty input field.
+The Updater accepts a PSBT and adds information to it, they add the UTXO, redeemScripts, witnessScripts and BIP 32 derivation paths if available.
+The Signer doesn’t add any data sources, instead they create signatures for the transactions they can sign and add them as a “Partial Signature” key-value pair for the input it relates too, the Signer can also compute addresses, values being sent and transaction fees, showing them to the user as a confirmation and a warning.
+
+<p>
+The Combiner merges one or more PSBTs removing any duplicate key-value pairs, the Combiner does not need to understand how to interpret the script, it just combines them according to the specifications.
+The Finalizer accepts only one PBST, it determines if the input has enough data to pass validation and if it does it constructs the scriptSig and scriptWitness and gets rid of all data except UTXO and unknown fields in the input key-value map.
+
+<p>
+The Transaction Extractor accepts a single PSBT and checks if all the inputs have complete scriptSigs and scriptWitnesses, if they do, the Extractor serializes the transactions and outputs a fully valid network transaction.
+The format is designed to be extended in the future by adding new types for the key-value pairs, making it backward compatible as Signers that don’t identify the new codes will just ignore them. To ensure compatibility it also designed to not be “unserializable” by normal transaction unserializers.
+
+<p>
+Regarding the encoding of a PSBT, it can either be represented by a Base64 string or a plain binary file with the .psbt file extension. A MIME type name will be added once the BIP has been revised.
+
+<p>
+This new format can bring a whole new adoption level to Multisig wallets, the BIP is still currently listed as a Draft but we should seeing it promoted to Proposed soon and maybe start seeing implementations pop up once in a while!
+
+
+
+<p>BIP 174 draft revision
+<br>Proposed changes to BIP174 draft
+<br><a href="https://www.mail-archive.com/bitcoin-dev@lists.linuxfoundation.org/msg05897.html">Bip 174 Proposal discussion</a>
+<br><a href="https://github.com/achow101/bitcoin/tree/psbt">reference implementation</a>
+
+
+<p>Imagine a situation where users, who could be collaborating remotely in some project and who’ve never met each other before, need to collectively agree to make a group payment. Each member will chip in some BCH and everyone will pay for it together, like a group of friends would settle a restaurant bill.
+
+<p>One way to do it would be for each member to prepare a transaction and then send the TXID to a chosen coordinator, who whould gather the payments from each participant and make sure the overall purchase is settled.
+
+<p>This system implies that there is a central trusted entity – someone who would have the responsibility to collect the money, make the payment and then make sure it went through correctly so he could send everyone a receipt afterwards.
+
+<p>This is a fine strategy to adopt with friends, but for unknown parties who don’t trust each other there is a problem: it is not a decentralized solution. Whenever a middleman, an escrow or any other trusted party is required, the solution is no longer decentralized. You trust someone to get the job done.
+
+<h3>PSBT</h3>
+
+Enter Partially Signed Bitcoin Transactions (PSBT).
+
+<p>You may be familiar with the concept of a multi-signature, or multisig, system? In this type of system two or more people must sign a transaction in order for it to be valid. 
+
+<p>Multisig payments had one limitation, though: the act of signing must be simultaneous. Everyone who agrees with a transaction must sign it at once before it is broadcast to the network.
+
+<p>Now imagine that there was a protocol such that a Bitcoin transaction that required multiple signatures was created but this transaction did not have to be built at once.
+
+<p>One user could sign today, another user could examine the TX and decide whether to sign later on and so forth. All this without a trusted intermediary!
+
+<p>That is what PSBT achieves. BIP 174 was proposed in mid 2017 to address exactly this scenario – and this system is already available in the current Bitcoin Cash Here’s a simple example scenario that illustrates how PSBT works.
+
+<p>To make a group payment, one of the group members creates a PSBT and adds unspent outputs, both his and other’s and the desired target output (who will receive the payment). 
+
+<p>Other users whose inputs are included in the PSBT receive the transaction by email or chat. 
+The user analyzes the inputs, outputs and amounts and decides whether it’s correct or not. If there is agreement, the user then adds his signature to the PSBT.
+
+<p>Once every participant has added their signature, the PSBT is complete. It is then compiled into a regular multisig Bitcoin transaction just as if it had been signed simultaneously. The TX is transmitted and mined like any other transaction.
+
+<p>That is how PSBT’s work! Fully decentralized – no single entity needs to be relied on or trusted to coordinate and distribute funds.
+
+<p>Users must only know each others’s Bitcoin addresses. This is a requirement for all Bitcoin payment processing anyway. So the only manual coordination that is needed between users is to know each others’ addresses. For which they can coordinate via email or chat.
+
+
+
+<a name=swap></a>
+<h3>BCH Trustless Swaps</h3>
+
+Because Bitcoin Cash has native SLP tokens, <a href="./psbt.html#psbt">PSBT</a> can be used to do trustless swaps!
+
+<p><b>Input 1 BCH SLP USDT (Alice), Input 2 BCH (Bob)
+<p>Output 1 BCH (Alice), Output 2 USDT (Bob)
+</b>
+
+
+<p>
+<img src=bch-swap.png width=600 height=600>
+
+
+<p>To add OP_RETURN data for SLP transaction enter hex data in the address field of the first Output tab. 
+
+<p>You can think of SLP as a ‘transaction within a transaction’. 
+If Alice wants to send Bob some tokens, she sends 546 satosis (dust minimum) amount of BCH, and the data to transfer the token is stored in the OP_RETURN
+
+<p>To include the SLP OP_RETURN,  
+use the SLP helper tab to create it. 
+For example "SLP 1 SEND token_id 1000"
+
+<p>This would send all tokens to the first output in the transaction vout1
+
+<p><br><img src=swap1.png width=750>
+
+<p><br>Verify the swap transaction
+
+<p>
+<img src=swap2.png width=750>
+
+<p>It is recommended to swap the SLP token from a single address and utxo, the simplest sweep slp transaction.
+
+
+<p>
+<pre>
+Typical 2 input 2 output swap transaction
+
+Input 1 slp token
+Input 2 bch
+Output 0 OP_RETURN
+Output 1 slp token, bch 546 satoshis
+Output 2 bch
+</pre>
+
+<p>Make sure the token is located in a single address / utxo. With no other tokens in the utxo. The whole token amount will be transfered.
+
+<p>The first output of the swap TX (vout1) should be the receiving SLP address, and must include 546 satoshis.
+
+<p>
+<h3>Testing Transactions</h3>
+
+You can create swap transactions without signing all the inputs or broadcasting to the network. That way you don´t need to pay the swap fee (around $1) or miner fees (around 900 satoshis).
+
+<p>
+But you can still see the swap process and verify the swap transaction in a readable format.
+
+<p>
+Thanks for the feedback. You can contact us at iphone@ba.net
+
+
+<p><br><br>We hope this introduction to partially signed Bitcoin Cash transactions has explained the concept. 
+
+
+
+<p>References
+
+<p><a href="https://bitcointechweekly.com/front/bip-174-psbt-partially-signed-bitcoin-transactions/">
+PSBT Documentation</a>
+
+<p><a href="https://github.com/bitcoin/bips/blob/master/bip-0174.mediawiki">
+BIP 174 – PSBT</a>
+
+<p>Multisig
+
+
+<p>
+
+<h3>Bitcoin Cash Offline Wallet </h3>
+
+<p>Test with small amounts, this software is provided with <b>no warranty.</b>
+
+<br>Nothing is sent to our server, all code is run locally in your browser.
+<br>Open source MIT code can be
+<a href="https://ba.net/bitcoin-cash-offline-wallet/src/" target=_blank>
+downloaded</a> and run in an air-gapped computer.
+
+<br><br>Based on code from ba.net, outcast3k, api cashexplorer.bitcoin.com
+<br>iphone@ba.net
+1BEz7cUYfis4NkZ35zLtfp12iaFRf4EoFm
+
+
+
+
+
+
+<p>
+<center>
+<img src=/bitcoin/Cold-Storage.png width=364 height=362>
+
+
+
+
+<p><br>
+<!--#include file="linkback.html" -->
