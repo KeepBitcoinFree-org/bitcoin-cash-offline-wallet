@@ -6,7 +6,6 @@
 
 <p><a href="https://ba.net/bitcoin-cash-offline-wallet/">BA.net Bitcoin Cash Offline Wallet</a>
 
-<p><a href="https://ba.net/bch-slp-trustless-swap/">BCH SLP Trustless Swap</a>
 
 <p>Test with small amounts. 
 <br>The app is provided on an "as is" basis, *without any warranties*
