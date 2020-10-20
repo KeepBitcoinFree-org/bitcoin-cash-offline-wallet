@@ -1,10 +1,10 @@
 
-<title>BCH SLP Trustless Swap - Decentralized Exchange DEX - Bitcoin Cash Offline Transaction Vault - BA.net</title>
+<title>Bitcoin Cash Offline Transaction Vault - BA.net</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-<meta name="description" content="BCH Trustless Swap - Decentralized Exchange DEX - DeFi - Group TX - PSBT Bitcoin Cash Offline Wallet BCH Offline Transaction Vault Web SPV tails cold storage paper wallet sweep vault">
+<meta name="description" content="Group TX - PSBT Bitcoin Cash Offline Wallet BCH Offline Transaction Vault Web SPV tails cold storage paper wallet sweep vault">
 
-<meta name="keywords" content="BCH Trustles Swap - Decentralized Exchange DEX - DeFi Group TX - PSBT offline,bitcoin,cash,wallet,bch,vault,transaction,js,browser,web,spv,tails,cold,storage,paper,wallet, sweep, vault">
+<meta name="keywords" content="Group TX - PSBT offline,bitcoin,cash,wallet,bch,vault,transaction,js,browser,web,spv,tails,cold,storage,paper,wallet, sweep, vault">
 
 <meta property="og:image" content="https://ba.net/offline-bch/swap.png">
 
@@ -32,7 +32,7 @@ width=320 height=50 border=0>
 <font size=5>
 
 <a name=psbt></a>
-<h3>BCH Trustless Swaps and Group Transactions</h3>
+<h3>BCH Group Transactions</h3>
 
 <p>Imagine a situation where users, who could be collaborating remotely in some project and who’ve never met each other before, need to collectively agree to make a group payment. Each member will chip in some BCH and everyone will pay for it together, like a group of friends would settle a restaurant bill.
 
@@ -69,71 +69,6 @@ The user analyzes the inputs, outputs and amounts and decides whether it’s cor
 
 
 
-<a name=swap></a>
-<h3>BCH Trustless Swaps</h3>
-
-Because Bitcoin Cash has native SLP tokens, <a href="./psbt.html#psbt">PSBT</a> can be used to do trustless swaps!
-
-<p><b>Input 1 BCH SLP USDT (Alice), Input 2 BCH (Bob)
-<p>Output 0 OP_RETURN, Output 1 BCH (Alice), Output 2 USDT (Bob)
-</b>
-
-
-<p>
-<img src=bch-swap.png width=600 height=600>
-
-
-<p>To add OP_RETURN data for SLP transaction enter hex data in the address field of the first Output tab. Leave the Amount empty. 
-
-<p>You can think of SLP as a ‘transaction within a transaction’. 
-If Alice wants to send Bob some tokens, she sends 546 satosis (dust minimum) amount of BCH, and the data to transfer the token is stored in the OP_RETURN
-
-<p>To include the SLP OP_RETURN,  
-use the SLP helper tab to create it. 
-For example "SLP 1 SEND token_id 1000"
-
-<p>This would send all tokens to the first output in the transaction (vout1)
-
-<p><br><img src=swap1.png width=750>
-
-<p><br>Verify the swap transaction
-
-<p>
-<img src=swap2.png width=750>
-
-<p>It is recommended to swap the SLP token from a single address and utxo, the simplest sweep slp transaction.
-
-
-<p>
-<pre>
-Typical 2 input 3 output swap transaction
-
-Input 1 slp token
-Input 2 bch
-Output 0 OP_RETURN
-Output 1 slp token, bch 546 satoshis
-Output 2 bch
-</pre>
-
-<p>Make sure the token is located in a single address / utxo. With no other tokens in the utxo. The whole token amount will be transfered.
-
-<p>The first output of the swap TX (vout1) should be the receiving SLP address, and must include 546 satoshis.
-
-<p>
-<h3>Testing Transactions</h3>
-
-You can create swap transactions without signing all the inputs or broadcasting to the network. That way you don´t need to pay the swap fee (around $1) or miner fees (around 900 satoshis).
-
-<p>
-But you can still see the swap process and verify the swap transaction in a readable format.
-
-<p>Double check your swaps on our decode tool, and even on external Bitcoin Core Tools (tx format is compatible) 
-<a href="https://live.blockcypher.com/btc/decodetx/" target=_blank>Blockcypher decode tool</a>
-
-
-<p>
-Thanks for the feedback. You can contact us at iphone@ba.net
-
 
 <p><br><br>
 
@@ -141,7 +76,7 @@ Thanks for the feedback. You can contact us at iphone@ba.net
 
 <p>References
 
-<p><a href="psbt1.html">
+<p><!a href="psbt1.html">
 PSBT Documentation</a>
 
 <p><a href="https://github.com/achow101/bitcoin/tree/psbt">
